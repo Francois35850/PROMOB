@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">AppliPromob</string>
     <string name="action_settings">Settings</string>
+    <string name="action_test">Test</string>
+    <string name="bouton_solo">Solo</string>
+    <string name="bouton_multi">Multijoueur</string>
+    <string name="bouton_stats">Mes stats</string>
+    <string name="bouton_minijeux">Les mini-jeux</string>
 </resources>
