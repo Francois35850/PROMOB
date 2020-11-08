@@ -14,9 +14,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static List<Jeu> miniJeux = new ArrayList<Jeu>();
+
+    public void addMiniJeu(Jeu j) {
+        miniJeux.add(j);
+    }
 
     // Fonction qui gère les clics sur les boutons
     void clickButton(Button btn, final int numeroBtn) {
@@ -67,5 +74,10 @@ public class MainActivity extends AppCompatActivity {
         clickButton(bt_multi, 2);
         clickButton(bt_stats, 3);
         clickButton(bt_minijeux, 4);
+        addMiniJeu(new Jeu("Athlétisme",4, Jeu.VictoryType.TEMPS,R.drawable.jeu_athletisme));
+        addMiniJeu(new Jeu("Cibles",4, Jeu.VictoryType.POINTS,R.drawable.jeu_cibles));
+        addMiniJeu(new Jeu("Bateau",4, Jeu.VictoryType.TEMPS,R.drawable.jeu_bateau));
+        addMiniJeu(new Jeu("Puzzle",4, Jeu.VictoryType.TEMPS,R.drawable.jeu_puzzle));
+        addMiniJeu(new Jeu("Juste Prix",4, Jeu.VictoryType.POINTS,R.drawable.jeu_juste_prix));
     }
 }

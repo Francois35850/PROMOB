@@ -48,6 +48,7 @@
                 android:padding="50px"
                 android:text="@string/bouton_solo"
                 android:textAllCaps="false"
+                android:textColor="@color/bleu_fonce"
                 android:textSize="60px"
                 android:textStyle="bold" />
 
@@ -62,6 +63,7 @@
                 android:padding="50px"
                 android:text="@string/bouton_multi"
                 android:textAllCaps="false"
+                android:textColor="@color/bleu_fonce"
                 android:textSize="60px"
                 android:textStyle="bold" />
 
@@ -76,6 +78,7 @@
                 android:padding="50px"
                 android:text="@string/bouton_stats"
                 android:textAllCaps="false"
+                android:textColor="@color/bleu_fonce"
                 android:textSize="60px"
                 android:textStyle="bold" />
 
@@ -90,6 +93,7 @@
                 android:padding="50px"
                 android:text="@string/bouton_minijeux"
                 android:textAllCaps="false"
+                android:textColor="@color/bleu_fonce"
                 android:textSize="60px"
                 android:textStyle="bold" />
         </LinearLayout>

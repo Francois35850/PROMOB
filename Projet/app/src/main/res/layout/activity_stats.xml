@@ -10,11 +10,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical|center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Étudier mes stats"
+        android:fontFamily="@font/stanberry"
+        android:layout_marginLeft="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/retour"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Étudier mes stats"/>
+        app:layout_constraintTop_toTopOf="@+id/retour"
+        android:textColor="@color/bleu_fonce"
+        android:textSize="22dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@id/retour"

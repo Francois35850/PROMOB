@@ -7,14 +7,18 @@
     tools:context=".MiniJeux">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:fontFamily="@font/stanberry"
         android:gravity="center_vertical|center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Tous les mini-jeux"
+        android:textColor="@color/bleu_fonce"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="@+id/retour"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Tous les mini-jeux"/>
+        app:layout_constraintTop_toTopOf="@+id/retour" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@id/retour"
@@ -26,5 +30,13 @@
         app:backgroundTint="@color/bleu_clair"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dataList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="104dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

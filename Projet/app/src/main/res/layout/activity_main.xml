@@ -14,7 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:outlineAmbientShadowColor="@color/orange"
+        android:outlineSpotShadowColor="@color/orange"
         app:srcCompat="@drawable/ic_round_emoji_people_24"
-        app:backgroundTint="@color/bleu_clair" />
+        app:backgroundTint="@color/orange" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
