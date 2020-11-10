@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import francois.fr.applipromob.jeux.Bateau;
 
-public class Jeu extends AppCompatActivity {
+public abstract class Jeu extends AppCompatActivity {
     String nom;
     int nbJoueurs;
     VictoryType vt;
