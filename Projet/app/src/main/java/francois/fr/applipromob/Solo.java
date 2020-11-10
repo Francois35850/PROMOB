@@ -9,18 +9,21 @@ import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import francois.fr.applipromob.gameview.GameViewCible;
 import francois.fr.applipromob.jeux.JustePrix;
 
 public class Solo extends AppCompatActivity {
 
+    private GameViewCible gameViewC;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_solo);
+        //setContentView(R.layout.activity_solo);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        FloatingActionButton retour = findViewById(R.id.retour);
-        Button lancementGame = findViewById(R.id.startGameSolo);
+        //FloatingActionButton retour = findViewById(R.id.retour);
+        /*Button lancementGame = findViewById(R.id.startGameSolo);
 
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +37,13 @@ public class Solo extends AppCompatActivity {
                 Intent activity = new Intent(getApplicationContext(), Jeu.class);
                 startActivity(activity);
             }
-        });
+        });*/
+        // On créé un objet "GameView" qui est le code principal du jeu
+        gameViewC =new GameViewCible(this);
 
+        // et on l'affiche.
+        setContentView(gameViewC);
     }
+
 }
+

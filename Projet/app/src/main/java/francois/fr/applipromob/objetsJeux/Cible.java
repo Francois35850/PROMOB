@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
+import java.util.Random;
+
 import francois.fr.applipromob.R;
 
 public class Cible {
@@ -17,9 +19,9 @@ public class Cible {
     private final Context mContext;
 
     // Constructeur de l'objet "Cible"
-    public Cible(final Context c, int x, int y)
+    public Cible(final Context c)
     {
-        this.x=x; this.y=y; // position de départ
+        x= 0; y=0; // position de départ
         mContext=c; // sauvegarde du contexte
     }
 
@@ -34,7 +36,7 @@ public class Cible {
 
     // redimensionnement de l'image selon la largeur/hauteur de l'écran passés en paramètre
     public void resize(int wScreen, int hScreen) {
-        // wScreen et hScreen sont la largeur et la hauteur de l'écran en pixel
+        // wEcran et hEcran sont la largeur et la hauteur de l'écran en pixel
         wEcran=wScreen;
         hEcran=hScreen;
 
@@ -42,6 +44,11 @@ public class Cible {
         cibleW=wScreen/5;
         cibleH=wScreen/5;
         img = setImage(mContext,R.drawable.cible,cibleW,cibleH);
+    }
+
+    public void randomLocation(){
+        x = new Random().nextInt(wEcran-cibleW+1);
+        y = new Random().nextInt(hEcran-cibleH+1);
     }
 
     // définit la coordonnée X de la cible
