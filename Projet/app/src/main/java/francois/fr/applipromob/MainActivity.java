@@ -17,6 +17,12 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
+import francois.fr.applipromob.jeux.Athletisme;
+import francois.fr.applipromob.jeux.Bateau;
+import francois.fr.applipromob.jeux.Cibles;
+import francois.fr.applipromob.jeux.JustePrix;
+import francois.fr.applipromob.jeux.Puzzle;
+
 public class MainActivity extends AppCompatActivity {
 
     public static List<Jeu> miniJeux = new ArrayList<Jeu>();
@@ -74,10 +80,10 @@ public class MainActivity extends AppCompatActivity {
         clickButton(bt_multi, 2);
         clickButton(bt_stats, 3);
         clickButton(bt_minijeux, 4);
-        addMiniJeu(new Jeu("Athlétisme",4, Jeu.VictoryType.TEMPS,R.drawable.jeu_athletisme));
-        addMiniJeu(new Jeu("Cibles",4, Jeu.VictoryType.POINTS,R.drawable.jeu_cibles));
-        addMiniJeu(new Jeu("Bateau",4, Jeu.VictoryType.TEMPS,R.drawable.jeu_bateau));
-        addMiniJeu(new Jeu("Puzzle",4, Jeu.VictoryType.TEMPS,R.drawable.jeu_puzzle));
-        addMiniJeu(new Jeu("Juste Prix",4, Jeu.VictoryType.POINTS,R.drawable.jeu_juste_prix));
+        addMiniJeu(new Athletisme("Athlétisme",4, Jeu.VictoryType.TEMPS,R.drawable.jeu_athletisme));
+        addMiniJeu(new Cibles("Cibles",4, Jeu.VictoryType.POINTS,R.drawable.jeu_cibles));
+        addMiniJeu(new Bateau("Bateau",4, Jeu.VictoryType.TEMPS,R.drawable.jeu_bateau));
+        addMiniJeu(new Puzzle("Puzzle",4, Jeu.VictoryType.TEMPS,R.drawable.jeu_puzzle));
+        addMiniJeu(new JustePrix("Juste Prix",4, Jeu.VictoryType.POINTS,R.drawable.jeu_juste_prix));
     }
 }
