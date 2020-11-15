@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import java.util.Timer;
 
 import francois.fr.applipromob.objetsJeux.Cible;
 import francois.fr.applipromob.thread.GameLoopCible;
@@ -42,6 +41,7 @@ public class GameViewCible extends SurfaceView implements SurfaceHolder.Callback
         // on dessine la cible
         cible.draw(canvas);
     }
+
 
     // Fonction appelée par la boucle principale (gameLoopThread)
     // On gère ici le déplacement des objets
@@ -104,7 +104,7 @@ public class GameViewCible extends SurfaceView implements SurfaceHolder.Callback
                         cible.randomLocation();
                     }
                     else {
-                        surfaceDestroyed(this.getHolder());
+
                     }
                 }
                 //Si on touche à côté de la cible, on perd 20 points
