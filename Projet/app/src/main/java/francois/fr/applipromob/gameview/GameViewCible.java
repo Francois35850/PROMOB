@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import java.util.Timer;
 
 import francois.fr.applipromob.objetsJeux.Cible;
 import francois.fr.applipromob.thread.GameLoopCible;
@@ -15,11 +16,13 @@ public class GameViewCible extends SurfaceView implements SurfaceHolder.Callback
     private GameLoopCible gameLoopThread;
     private Cible cible;
     private int score;
+    private long startTime;
 
     // création de la surface de dessin
     public GameViewCible(Context context) {
         super(context);
         score = 0;
+        startTime = System.currentTimeMillis();
         getHolder().addCallback(this);
         gameLoopThread = new GameLoopCible(this);
 
@@ -97,7 +100,12 @@ public class GameViewCible extends SurfaceView implements SurfaceHolder.Callback
                     else {
                         score = score + 10;
                     }
-                    cible.randomLocation();
+                    if (System.currentTimeMillis() < startTime + 3000) {
+                        cible.randomLocation();
+                    }
+                    else {
+                        surfaceDestroyed(this.getHolder());
+                    }
                 }
                 //Si on touche à côté de la cible, on perd 20 points
                 else{
