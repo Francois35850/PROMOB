@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.ActivityJustePrix"></activity>
         <activity android:name=".activities.ActivityCible" />
+        <activity android:name=".gameview.GameViewJP" />
         <activity android:name=".Stats" />
         <activity android:name=".Multi" />
         <activity android:name=".Solo" />

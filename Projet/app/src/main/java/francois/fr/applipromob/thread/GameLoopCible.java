@@ -3,6 +3,7 @@ package francois.fr.applipromob.thread;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
+import android.widget.Toast;
 
 import francois.fr.applipromob.MainActivity;
 import francois.fr.applipromob.Solo;
