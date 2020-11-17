@@ -1,10 +1,16 @@
 package francois.fr.applipromob.thread;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 
+import francois.fr.applipromob.MainActivity;
+import francois.fr.applipromob.Solo;
 import francois.fr.applipromob.gameview.GameViewCible;
 
-public class GameLoopCible extends Thread{
+public class GameLoopCible extends Thread {
+
+    private Context context;
 
     // on définit arbitrairement le nombre d'images par secondes à 30
     private final static int FRAMES_PER_SECOND = 30;
@@ -17,8 +23,9 @@ public class GameLoopCible extends Thread{
     private boolean running = false; // état du thread, en cours ou non
 
     // constructeur de l'objet, on lui associe l'objet view passé en paramètre
-    public GameLoopCible(GameViewCible view) {
+    public GameLoopCible(GameViewCible view, Context c) {
         this.view = view;
+        this.context = c;
     }
 
     // défini l'état du thread : true ou false
@@ -28,8 +35,7 @@ public class GameLoopCible extends Thread{
 
     // démarrage du thread
     @Override
-    public void run()
-    {
+    public void run() {
         // déclaration des temps de départ et de pause
         long startTime;
         long sleepTime;
@@ -37,33 +43,41 @@ public class GameLoopCible extends Thread{
         // boucle tant que running est vrai
         // il devient faux par setRunning(false), notamment lors de l'arrêt de l'application
         // cf : surfaceDestroyed() dans GameView.java
-        while (running)
-        {
+        while (running) {
             // horodatage actuel
             startTime = System.currentTimeMillis();
 
             // mise à jour du déplacement des ojets dans GameView.update()
-            synchronized (view.getHolder()) {view.update();}
+            synchronized (view.getHolder()) {
+                view.update();
+            }
 
             // Rendu de l'image, tout en vérrouillant l'accès car nous
             // y accédons à partir d'un processus distinct
             Canvas c = null;
             try {
                 c = view.getHolder().lockCanvas();
-                synchronized (view.getHolder()) {view.doDraw(c);}
-            }
-            finally
-            {
-                if (c != null) {view.getHolder().unlockCanvasAndPost(c);}
+                synchronized (view.getHolder()) {
+                    view.doDraw(c);
+                }
+            } finally {
+                if (c != null) {
+                    view.getHolder().unlockCanvasAndPost(c);
+                }
             }
 
             // Calcul du temps de pause, et pause si nécessaire
             // afin de ne réaliser le travail ci-dessus que X fois par secondes
-            sleepTime = SKIP_TICKS-(System.currentTimeMillis() - startTime);
+            sleepTime = SKIP_TICKS - (System.currentTimeMillis() - startTime);
             try {
-                if (sleepTime >= 0) {sleep(sleepTime);}
+                if (sleepTime >= 0) {
+                    sleep(sleepTime);
+                }
+            } catch (Exception e) {
             }
-            catch (Exception e) {}
         } // boucle while (running)
+        Intent activity = new Intent(context, Solo.class);
+        activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(activity);
     } // public void run()
 }

@@ -1,48 +1,48 @@
 package francois.fr.applipromob;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
+
 import francois.fr.applipromob.gameview.GameViewCible;
-import francois.fr.applipromob.jeux.JustePrix;
 
 public class Solo extends AppCompatActivity {
 
-    private GameViewCible gameViewC;
+    List<Jeu> jeux;
+    RecyclerView dataList;
+    AdapterMiniJeu adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_solo);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_solo);
 
-        //FloatingActionButton retour = findViewById(R.id.retour);
-        /*Button lancementGame = findViewById(R.id.startGameSolo);
+        jeux = MainActivity.miniJeux;
 
+        FloatingActionButton retour = findViewById(R.id.retour);
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                Intent actMain = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(actMain);
             }
         });
-        lancementGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent activity = new Intent(getApplicationContext(), Jeu.class);
-                startActivity(activity);
-            }
-        });*/
-        // On créé un objet "GameView" qui est le code principal du jeu
-        gameViewC =new GameViewCible(this);
 
-        // et on l'affiche.
-        setContentView(gameViewC);
+        dataList = findViewById(R.id.dataList);
+
+        adapter = new AdapterMiniJeu(this);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false);
+        dataList.setLayoutManager(gridLayoutManager);
+        dataList.setAdapter(adapter);
     }
 
 }

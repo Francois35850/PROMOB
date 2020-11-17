@@ -81,21 +81,6 @@
                 android:textColor="@color/bleu_fonce"
                 android:textSize="60px"
                 android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/boutonMiniJeux"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="70dp"
-                android:layout_marginVertical="20dp"
-                android:background="@drawable/custom_button"
-                android:fontFamily="@font/stanberry"
-                android:padding="50px"
-                android:text="@string/bouton_minijeux"
-                android:textAllCaps="false"
-                android:textColor="@color/bleu_fonce"
-                android:textSize="60px"
-                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

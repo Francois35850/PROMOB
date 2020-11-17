@@ -40,7 +40,7 @@ public class Cible {
         wEcran=wScreen;
         hEcran=hScreen;
 
-        // on définit (au choix) la taille de la balle à 1/5ème de la largeur de l'écran
+        // on définit (au choix) la taille de la cible à 1/5ème de la largeur de l'écran
         cibleW=wScreen/5;
         cibleH=wScreen/5;
         img = setImage(mContext,R.drawable.cible,cibleW,cibleH);
@@ -48,7 +48,7 @@ public class Cible {
 
     public void randomLocation(){
         x = new Random().nextInt(wEcran-cibleW+1);
-        y = new Random().nextInt(hEcran-cibleH+1);
+        y = new Random().nextInt((int) (hEcran*0.8)-cibleH+1);
     }
 
     // définit la coordonnée X de la cible

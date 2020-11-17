@@ -1,6 +1,7 @@
 package francois.fr.applipromob;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.time.Duration;
-import java.util.List;
+import francois.fr.applipromob.activities.ActivityCible;
 
 public class AdapterMiniJeu extends RecyclerView.Adapter<AdapterMiniJeu.ViewHolder> {
     LayoutInflater inflater;
@@ -24,7 +24,7 @@ public class AdapterMiniJeu extends RecyclerView.Adapter<AdapterMiniJeu.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.custom_grid_layout,parent,false);
+        View view = inflater.inflate(R.layout.custom_grid_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -52,7 +52,27 @@ public class AdapterMiniJeu extends RecyclerView.Adapter<AdapterMiniJeu.ViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(),"Clicked : " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(view.getContext(), "Clicked : " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                    String nomJeu = MainActivity.miniJeux.get(getAdapterPosition()).nom;
+                    switch (nomJeu) {
+                        case "Athlétisme":
+                            view.getContext().startActivity(new Intent(view.getContext(), ActivityCible.class));
+                            break;
+                        case "Cibles":
+                            view.getContext().startActivity(new Intent(view.getContext(), ActivityCible.class));
+                            break;
+                        case "Bateau":
+                            view.getContext().startActivity(new Intent(view.getContext(), ActivityCible.class));
+                            break;
+                        case "Puzzle":
+                            view.getContext().startActivity(new Intent(view.getContext(), ActivityCible.class));
+                            break;
+                        case "Juste Prix":
+                            view.getContext().startActivity(new Intent(view.getContext(), ActivityCible.class));
+                            break;
+                        default:
+                            System.out.println("Nom de jeu incorrect");
+                    }
                 }
             });
         }
