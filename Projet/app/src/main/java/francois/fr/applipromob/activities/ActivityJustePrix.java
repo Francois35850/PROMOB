@@ -1,18 +1,16 @@
 package francois.fr.applipromob.activities;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import francois.fr.applipromob.R;
 import francois.fr.applipromob.gameview.GameViewCible;
 
-public class ActivityCible extends AppCompatActivity {
+public class ActivityJustePrix extends AppCompatActivity {
     private GameViewCible gameViewC;
     TextView txtTimer;
     int time; // temps en sec
@@ -22,9 +20,9 @@ public class ActivityCible extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cible);
+        setContentView(R.layout.activity_juste_prix);
 
         time = 5; // temps du décompte en secondes
         txtTimer = findViewById(R.id.txtTimer);

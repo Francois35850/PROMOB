@@ -19,7 +19,7 @@ public class GameLoopCible extends Thread {
     // on doit en afficher une toutes les (1000 / X) ms.
     private final static int SKIP_TICKS = 1000 / FRAMES_PER_SECOND;
 
-    private final GameViewCible view; // l'objet SurfaceView que nous verrons plus bas
+    private final GameViewCible view;
     private boolean running = false; // état du thread, en cours ou non
 
     // constructeur de l'objet, on lui associe l'objet view passé en paramètre
