@@ -10,7 +10,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import francois.fr.applipromob.R;
-import francois.fr.applipromob.thread.GameLoopCible;
 import francois.fr.applipromob.thread.GameLoopCourse;
 
 public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callback {
