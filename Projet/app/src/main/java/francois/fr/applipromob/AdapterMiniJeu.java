@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import francois.fr.applipromob.activities.ActivityCible;
 import francois.fr.applipromob.activities.ActivityJustePrix;
+import francois.fr.applipromob.activities.ActivityPuzzle;
 
 public class AdapterMiniJeu extends RecyclerView.Adapter<AdapterMiniJeu.ViewHolder> {
     LayoutInflater inflater;
@@ -66,7 +67,7 @@ public class AdapterMiniJeu extends RecyclerView.Adapter<AdapterMiniJeu.ViewHold
                             view.getContext().startActivity(new Intent(view.getContext(), ActivityCible.class));
                             break;
                         case "Puzzle":
-                            view.getContext().startActivity(new Intent(view.getContext(), ActivityCible.class));
+                            view.getContext().startActivity(new Intent(view.getContext(), ActivityPuzzle.class));
                             break;
                         case "Juste Prix":
                             view.getContext().startActivity(new Intent(view.getContext(), ActivityJustePrix.class));
