@@ -32,18 +32,19 @@ public class Runner {
     public BitmapDrawable setImage(final Context c, final int w, final int h)
     {
         int ressource;
+        int[] ressources =
+                {R.drawable.runner_01, R.drawable.runner_02, R.drawable.runner_03,R.drawable.runner_04,R.drawable.runner_05,R.drawable.runner_06,R.drawable.runner_07,R.drawable.runner_08,R.drawable.runner_09,R.drawable.runner_10};
         if (img==null){
-            ressource = R.drawable.runner_01;
-            pngNumber = 1;
+            ressource = ressources[0];
+            pngNumber = 0;
         }
-        else if (pngNumber<10){
+        else if (pngNumber<9){
             pngNumber = pngNumber + 1;
-            String name = "runner_" + pngNumber;
-            ressource = R.drawable.runner_05;
+            ressource = ressources[pngNumber];
         }
         else {
-            ressource = R.drawable.runner_10;
-            pngNumber = 0;
+            ressource = ressources[9];
+            pngNumber = -1;
         }
         Drawable dr = c.getResources().getDrawable(ressource);
         Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
