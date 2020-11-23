@@ -14,7 +14,7 @@ public class Runner {
 
     private BitmapDrawable img = null; // image de la cible
     private int x,y; // coordonnées x,y de la cible en pixel
-    private int runnerW, runnerH; // largeur et hauteur de la cible en pixels
+    private int runnerW, runnerH; // largeur et hauteur de l'image en pixels
     private int wEcran,hEcran; // largeur et hauteur de l'écran en pixels
     private int pngNumber;
 
