@@ -16,6 +16,7 @@
         <activity android:name=".activities.ActivityPuzzle" />
         <activity android:name=".activities.ActivityJustePrix" />
         <activity android:name=".activities.ActivityCible" />
+        <activity android:name=".activities.ActivityCourse"/>
         <activity android:name=".gameview.GameViewJP" />
         <activity android:name=".Stats" />
         <activity android:name=".Multi" />

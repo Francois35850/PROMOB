@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.hardware.Sensor;
+import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -14,6 +15,7 @@ import android.view.SurfaceView;
 import francois.fr.applipromob.R;
 import francois.fr.applipromob.objetsJeux.Runner;
 import francois.fr.applipromob.objetsJeux.Wind;
+import francois.fr.applipromob.sensors.AccelerometerCourse;
 import francois.fr.applipromob.thread.GameLoopCourse;
 
 public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callback {
@@ -23,12 +25,11 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
     private long startTime;
     private int tpsTotal;
     private int tpsRestant;
+
+    private AccelerometerCourse accel;
+
     private Runner runner;
     private Wind wind;
-    private Sensor accelerometre;
-
-    //Gestion de nos sensors
-    SensorManager sensorManager = (SensorManager) this.getContext().getSystemService(Context.SENSOR_SERVICE);
 
     public String checkDigit(int number) {
         return number <= 9 ? "0" + number : String.valueOf(number);
@@ -42,9 +43,8 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
         getHolder().addCallback(this);
         gameLoopThread = new GameLoopCourse(this, this.getContext());
 
-        //Accès à notre accéléromètre
-        accelerometre = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-
+        //Creation de l'acces à notre accelerometre
+        accel = new AccelerometerCourse(this.getContext(),this);
 
         //création de notre runner
         runner = new Runner(this.getContext());
@@ -141,6 +141,7 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
         return true;  // On retourne "true" pour indiquer qu'on a géré l'évènement
     }
 
+
     // Fonction obligatoire de l'objet SurfaceView
     // Fonction appelée à la CREATION et MODIFICATION et ONRESUME de l'écran
     // nous obtenons ici la largeur/hauteur de l'écran en pixels
@@ -149,6 +150,11 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
         runner.resize(w, h); // on définit la taille de la cible selon la taille de l'écran
         wind.resize(w,h);
     }
+
+    public Runner getRunner() {
+        return runner;
+    }
+
 
 }
 
