@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import francois.fr.applipromob.activities.ActivityCible;
+import francois.fr.applipromob.activities.ActivityCourse;
 import francois.fr.applipromob.activities.ActivityJustePrix;
 import francois.fr.applipromob.activities.ActivityPuzzle;
 
@@ -58,7 +59,7 @@ public class AdapterMiniJeu extends RecyclerView.Adapter<AdapterMiniJeu.ViewHold
                     String nomJeu = MainActivity.miniJeux.get(getAdapterPosition()).nom;
                     switch (nomJeu) {
                         case "Athlétisme":
-                            view.getContext().startActivity(new Intent(view.getContext(), ActivityCible.class));
+                            view.getContext().startActivity(new Intent(view.getContext(), ActivityCourse.class));
                             break;
                         case "Cibles":
                             view.getContext().startActivity(new Intent(view.getContext(), ActivityCible.class));

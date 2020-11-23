@@ -10,42 +10,28 @@ import java.util.Random;
 
 import francois.fr.applipromob.R;
 
-public class Runner {
+public class Wind {
 
     private BitmapDrawable img = null; // image
     private int x,y; // coordonnées x,y en pixel
-    private int runnerW, runnerH; // largeur et hauteur de l'image en pixels
+    private int windW, windH; // largeur et hauteur de l'image en pixels
     private int wEcran,hEcran; // largeur et hauteur de l'écran en pixels
-    private int pngNumber;
 
     private final Context mContext;
 
-    // Constructeur de l'objet "Runner"
-    public Runner(final Context c)
+    // Constructeur de l'objet "Wind"
+    public Wind(final Context c)
     {
         x= 0; y=0; // position de départ
         mContext=c; // sauvegarde du contexte
     }
 
-    // on attribue à l'objet "Runner" l'image passée en paramètre
+    // on attribue à l'objet "Wind" l'image passée en paramètre
     // w et h sont sa largeur et hauteur définis en pixels
     public BitmapDrawable setImage(final Context c, final int w, final int h)
     {
-        int ressource;
-        int[] ressources =
-                {R.drawable.runner_01, R.drawable.runner_02, R.drawable.runner_03,R.drawable.runner_04,R.drawable.runner_05,R.drawable.runner_06,R.drawable.runner_07,R.drawable.runner_08,R.drawable.runner_09,R.drawable.runner_10};
-        if (img==null){
-            ressource = ressources[0];
-            pngNumber = 0;
-        }
-        else if (pngNumber<9){
-            pngNumber = pngNumber + 1;
-            ressource = ressources[pngNumber];
-        }
-        else {
-            ressource = ressources[9];
-            pngNumber = -1;
-        }
+        //A modifier
+        int ressource = R.drawable.cible;
         Drawable dr = c.getResources().getDrawable(ressource);
         Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
         return new BitmapDrawable(c.getResources(), Bitmap.createScaledBitmap(bitmap, w, h, true));
@@ -57,43 +43,43 @@ public class Runner {
         wEcran=wScreen;
         hEcran=hScreen;
 
-        // on définit (au choix) la taille du runner à 1/5ème de la largeur de l'écran
-        runnerW=wEcran/5;
-        runnerH=hEcran/5;
-        img = setImage(mContext,runnerW,runnerH);
+        // on définit (au choix) la taille de la cible à 1/5ème de la largeur de l'écran
+        windW=wEcran/5;
+        windH=hEcran/5;
+        img = setImage(mContext,windW,windH);
     }
 
-    // définit la coordonnée X du runner
+    // définit la coordonnée X du wind
     public void setX(int x) {
         this.x = x;
     }
 
-    // définit la coordonnée Y du runner
+    // définit la coordonnée Y du wind
     public void setY(int y) {
         this.y = y;
     }
 
-    // retourne la coordonnée X du runner
+    // retourne la coordonnée X du wind
     public int getX() {
         return x;
     }
 
-    // retourne la coordonnée Y du runner
+    // retourne la coordonnée Y du wind
     public int getY() {
         return y;
     }
 
-    // retourne la largeur du runner en pixel
+    // retourne la largeur du wind en pixel
     public int getRunnerW() {
-        return runnerW;
+        return windW;
     }
 
-    // retourne la hauteur du runner en pixel
+    // retourne la hauteur du wind en pixel
     public int getRunnerH() {
-        return runnerH;
+        return windH;
     }
 
-    // on dessine le runner, en x et y
+    // on dessine le wind, en x et y
     public void draw(Canvas canvas)
     {
         if(img==null) {return;}
