@@ -31,7 +31,7 @@ public class Wind {
     public BitmapDrawable setImage(final Context c, final int w, final int h)
     {
         //A modifier
-        int ressource = R.drawable.cible;
+        int ressource = R.drawable.vent;
         Drawable dr = c.getResources().getDrawable(ressource);
         Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
         return new BitmapDrawable(c.getResources(), Bitmap.createScaledBitmap(bitmap, w, h, true));

@@ -27,7 +27,7 @@ public class ActivityCourse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cible);
 
-        time = 5; // temps du décompte en secondes
+        time = 2; // temps du décompte en secondes
         txtTimer = findViewById(R.id.txtTimer);
         new CountDownTimer(time * 1000, 1000) {
             @Override

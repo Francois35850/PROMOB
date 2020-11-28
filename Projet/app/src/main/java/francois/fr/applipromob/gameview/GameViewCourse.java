@@ -23,13 +23,13 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
     private GameLoopCourse gameLoopThread;
     private int score;
     private long startTime;
-    private int tpsTotal;
-    private int tpsRestant;
 
     private AccelerometerCourse accel;
+    
 
     private Runner runner;
     private Wind wind;
+
 
     public String checkDigit(int number) {
         return number <= 9 ? "0" + number : String.valueOf(number);
@@ -52,11 +52,6 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
         //Création de notre wind
         wind = new Wind(this.getContext());
 
-        // Gestion temps
-        tpsTotal = 8000; // 8sec
-        tpsRestant = 8;
-
-
     }
 
     // Fonction qui "dessine" un écran de jeu
@@ -77,7 +72,7 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
         textScore.setTextSize(50);
 
         canvas.drawText("Score : " + String.valueOf(score), (float) (w * 0.1), (float) (h * 0.1), textScore);
-        canvas.drawText("0: " + checkDigit(tpsRestant), (float) (w * 0.1), (float) (h * 0.9), textScore);
+        canvas.drawText("Accel : " + accel.getVal(), (float) (w * 0.1), (float) (h * 0.9),textScore);
 
         // on dessine le coureur
         runner.draw(canvas);
@@ -88,11 +83,12 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
     // On gère ici le déplacement des objets
     public void update() {
         runner.setImage(this.getContext(),runner.getRunnerW(),runner.getRunnerH());
-        if (System.currentTimeMillis() > startTime + tpsTotal) {
-            gameLoopThread.setRunning(false);
+        if (accel.isValuesChanged()){
+
         }
-        tpsRestant = (int) ((startTime + tpsTotal - System.currentTimeMillis()) / 1000) + 1;
-        System.out.println(tpsRestant);
+        if (System.currentTimeMillis() > startTime ) {
+            //gameLoopThread.setRunning(false);
+        }
     }
 
     // Fonction obligatoire de l'objet SurfaceView
