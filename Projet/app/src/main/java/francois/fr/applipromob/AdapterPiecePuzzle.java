@@ -16,17 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import francois.fr.applipromob.gameview.GameViewPuzzle;
 import francois.fr.applipromob.objetsJeux.PiecePuzzle;
 
 public class AdapterPiecePuzzle extends RecyclerView.Adapter<AdapterPiecePuzzle.ViewHolder> {
 
-    private List<PiecePuzzle> pieces = new ArrayList<>();
     private Context context;
-    ImageView p1;
 
-    public AdapterPiecePuzzle(Context c, ArrayList<PiecePuzzle> pieces) {
+    public AdapterPiecePuzzle(Context c) {
         this.context = c;
-        this.pieces = pieces;
     }
 
     @NonNull
@@ -37,18 +35,19 @@ public class AdapterPiecePuzzle extends RecyclerView.Adapter<AdapterPiecePuzzle.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.imageView.setImageDrawable(pieces.get(position).getImg());
-        holder.imageView.setId(position);
-
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        final int indexPiece = GameViewPuzzle.puzzleChoisi.getLp().get(position).getPosAleatoire();
+        holder.imageView.setImageDrawable(GameViewPuzzle.puzzleChoisi.getLp().get(GameViewPuzzle.puzzleChoisi.getLp().get(position).getPosAleatoire()).getImg());
+        holder.imageView.setVisibility(GameViewPuzzle.puzzleChoisi.getLp().get(GameViewPuzzle.puzzleChoisi.getLp().get(position).getPosAleatoire()).isVisible() ? View.VISIBLE : View.INVISIBLE);
 
         holder.imageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                System.out.println(v.getId());
+                v.setId(indexPiece);
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
                 v.startDrag(data, shadowBuilder, v, 0);
+                System.out.println(v.getId());
                 return true;
             }
         });
@@ -56,7 +55,7 @@ public class AdapterPiecePuzzle extends RecyclerView.Adapter<AdapterPiecePuzzle.
 
     @Override
     public int getItemCount() {
-        return pieces.size();
+        return GameViewPuzzle.puzzleChoisi.getLp().size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

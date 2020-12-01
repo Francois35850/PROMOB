@@ -43,28 +43,28 @@
         <ImageView
             android:id="@+id/pos2"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos1"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos3"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos2"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos4"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos3"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos5"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos4"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/custom_cadre"/>
@@ -72,35 +72,35 @@
         <ImageView
             android:id="@+id/pos6"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/pos1"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos7"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos1"
             app:layout_constraintTop_toBottomOf="@id/pos2"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos8"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos2"
             app:layout_constraintTop_toBottomOf="@id/pos3"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos9"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos3"
             app:layout_constraintTop_toBottomOf="@id/pos4"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos10"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos4"
             app:layout_constraintTop_toBottomOf="@id/pos5"
             android:background="@drawable/custom_cadre"/>
@@ -115,14 +115,14 @@
         <ImageView
             android:id="@+id/pos12"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos1"
             app:layout_constraintTop_toBottomOf="@id/pos7"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos13"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos2"
             app:layout_constraintTop_toBottomOf="@id/pos8"
             android:background="@drawable/custom_cadre"/>
@@ -136,7 +136,7 @@
         <ImageView
             android:id="@+id/pos15"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos4"
             app:layout_constraintTop_toBottomOf="@id/pos10"
             android:background="@drawable/custom_cadre"/>
@@ -144,35 +144,35 @@
         <ImageView
             android:id="@+id/pos16"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/pos11"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos17"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos1"
             app:layout_constraintTop_toBottomOf="@id/pos12"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos18"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos2"
             app:layout_constraintTop_toBottomOf="@id/pos13"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos19"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos3"
             app:layout_constraintTop_toBottomOf="@id/pos14"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos20"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos4"
             app:layout_constraintTop_toBottomOf="@id/pos15"
             android:background="@drawable/custom_cadre"/>
@@ -180,35 +180,35 @@
         <ImageView
             android:id="@+id/pos21"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/pos16"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos22"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos1"
             app:layout_constraintTop_toBottomOf="@id/pos17"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos23"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos2"
             app:layout_constraintTop_toBottomOf="@id/pos18"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos24"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos3"
             app:layout_constraintTop_toBottomOf="@id/pos19"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos25"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos4"
             app:layout_constraintTop_toBottomOf="@id/pos20"
             android:background="@drawable/custom_cadre"/>
@@ -216,35 +216,35 @@
         <ImageView
             android:id="@+id/pos26"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/pos21"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos27"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos1"
             app:layout_constraintTop_toBottomOf="@id/pos22"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos28"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos2"
             app:layout_constraintTop_toBottomOf="@id/pos23"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos29"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos3"
             app:layout_constraintTop_toBottomOf="@id/pos24"
             android:background="@drawable/custom_cadre"/>
         <ImageView
             android:id="@+id/pos30"
             android:layout_width="61dp"
-            android:layout_height="61dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toEndOf="@id/pos4"
             app:layout_constraintTop_toBottomOf="@id/pos25"
             android:background="@drawable/custom_cadre"/>
@@ -595,10 +595,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_centerInParent="true">
+            android:layout_centerInParent="true"
+            android:background="@color/bleu_fonce">
 
         </androidx.recyclerview.widget.RecyclerView>
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 

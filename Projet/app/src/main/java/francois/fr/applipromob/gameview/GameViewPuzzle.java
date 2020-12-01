@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import francois.fr.applipromob.AdapterPiecePuzzle;
 import francois.fr.applipromob.R;
+import francois.fr.applipromob.Solo;
 import francois.fr.applipromob.objetsJeux.PiecePuzzle;
 import francois.fr.applipromob.objetsJeux.Puzzle;
 
@@ -26,13 +28,16 @@ public class GameViewPuzzle extends AppCompatActivity {
     List<ImageView> pieces = new ArrayList<>();
     List<ImageView> cadres = new ArrayList<>();
 
+    public static Puzzle puzzleChoisi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.template_puzzle);
-        initViews();
         initPuzzles();
+        puzzleChoisi = puzzles.get(0);
+        initViews();
+        System.out.println("Initialisations terminées");
     }
 
     private View.OnDragListener getListener(final int position) {
@@ -42,7 +47,6 @@ public class GameViewPuzzle extends AppCompatActivity {
                 int dragEvent = event.getAction();
                 switch (dragEvent) {
                     case DragEvent.ACTION_DRAG_ENTERED:
-
                         break;
                     case DragEvent.ACTION_DRAG_EXITED:
                         break;
@@ -50,7 +54,13 @@ public class GameViewPuzzle extends AppCompatActivity {
                         final View v = (View) event.getLocalState();
                         if (v.getId() == position) {
                             pieces.get(position).setVisibility(View.VISIBLE);
+                            puzzleChoisi.getLp().get(position).setVisible(false);
                             v.setVisibility(View.INVISIBLE);
+                            if (puzzleChoisi.termine()) {
+                                Intent activity = new Intent(getApplicationContext(), Solo.class);
+                                activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(activity);
+                            }
                         }
                         break;
                 }
@@ -187,7 +197,9 @@ public class GameViewPuzzle extends AppCompatActivity {
         piecesWinnie.add(new PiecePuzzle(getResources().getDrawable(R.drawable.winnie28), 28));
         piecesWinnie.add(new PiecePuzzle(getResources().getDrawable(R.drawable.winnie29), 29));
         piecesWinnie.add(new PiecePuzzle(getResources().getDrawable(R.drawable.winnie30), 30));
-        puzzles.add(new Puzzle("Winnie", getResources().getDrawable(R.drawable.winnie_resultat), piecesWinnie));
+        Puzzle winnie = new Puzzle("Winnie", getResources().getDrawable(R.drawable.winnie_resultat), piecesWinnie);
+        winnie.melangePieces();
+        puzzles.add(winnie);
         initRecyclerView();
     }
 
@@ -195,7 +207,7 @@ public class GameViewPuzzle extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView r = findViewById(R.id.recyclerView);
         r.setLayoutManager(layoutManager);
-        AdapterPiecePuzzle adapter = new AdapterPiecePuzzle(this, puzzles.get(0).getLp());
+        AdapterPiecePuzzle adapter = new AdapterPiecePuzzle(this);
         r.setAdapter(adapter);
     }
 
