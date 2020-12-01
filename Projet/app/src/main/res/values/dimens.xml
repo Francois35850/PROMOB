@@ -1,16 +1,4 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
 
-    <dimen name="creuxW">54dp</dimen>
-    <dimen name="creuxH">36.5dp</dimen>
-
-    <dimen name="pleinAngleW">71dp</dimen>
-    <dimen name="pleinAngleH">48dp</dimen>
-
-    <dimen name="pleinBordW">88.5dp</dimen>
-    <dimen name="pleinBordH">48dp</dimen>
-
-    <dimen name="pleinCentreW">88.5dp</dimen>
-    <dimen name="pleinCentreH">60dp</dimen>
-
 </resources>
