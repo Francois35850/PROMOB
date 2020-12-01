@@ -4,19 +4,28 @@ package francois.fr.applipromob.activities;
         import androidx.annotation.Nullable;
         import androidx.appcompat.app.AppCompatActivity;
 
+        import android.content.Context;
+        import android.hardware.Sensor;
+        import android.hardware.SensorEvent;
+        import android.hardware.SensorEventListener;
+        import android.hardware.SensorManager;
         import android.os.Bundle;
         import android.os.CountDownTimer;
-        import android.view.View;
-        import android.widget.LinearLayout;
         import android.widget.TextView;
+
+        import java.util.List;
 
         import francois.fr.applipromob.R;
         import francois.fr.applipromob.gameview.GameViewCourse;
+        import francois.fr.applipromob.sensors.Accelerometer;
 
-public class ActivityCourse extends AppCompatActivity {
+public class ActivityCourse extends AppCompatActivity{
     private GameViewCourse gameViewC;
-    TextView txtTimer;
-    int time; // temps en sec
+    private TextView txtTimer;
+    private int time; // temps en sec
+    private Accelerometer accelerometer;
+    private float prevX,prevY,prevZ;
+
 
     public String checkDigit(int number) {
         return number <= 9 ? "0" + number : String.valueOf(number);
@@ -27,6 +36,12 @@ public class ActivityCourse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cible);
 
+        //Initialisation des valeurs de l'accelerometre
+        prevX = 0;
+        prevY = 0;
+        prevZ = 0;
+
+        gameViewC = new GameViewCourse(getApplicationContext());
         time = 2; // temps du décompte en secondes
         txtTimer = findViewById(R.id.txtTimer);
         new CountDownTimer(time * 1000, 1000) {
@@ -39,9 +54,39 @@ public class ActivityCourse extends AppCompatActivity {
             @Override
             public void onFinish() {
                 txtTimer.setText("GO !!");
-                gameViewC = new GameViewCourse(getApplicationContext());
                 setContentView(gameViewC);
             }
         }.start();
+
+        //Gestion de l'accelerometre
+        accelerometer = new Accelerometer(this);
+        accelerometer.setListener(new Accelerometer.Listener() {
+            @Override
+            public void onTranslation(float tx, float ty, float tz) {
+                System.out.println(tx);
+                System.out.println(ty);System.out.println(tz);
+                if (prevX > tx + 1 || prevX < tx - 1 || prevY > ty + 1 || prevY < ty - 1 || prevZ > tz + 1 || prevZ < tz - 1 ) {
+                    gameViewC.getRunner().setX(gameViewC.getRunner().getX()+2);
+                    prevX = tx;
+                    prevY = ty;
+                    prevZ = tz;
+                }
+            }
+        });
+
+
     }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        accelerometer.register();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        accelerometer.unregister();
+    }
+
 }

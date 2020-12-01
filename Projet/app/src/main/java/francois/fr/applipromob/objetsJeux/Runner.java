@@ -23,7 +23,7 @@ public class Runner {
     // Constructeur de l'objet "Runner"
     public Runner(final Context c)
     {
-        x= 0; y=0; // position de départ
+        x= 0; y=500; // position de départ
         mContext=c; // sauvegarde du contexte
     }
 

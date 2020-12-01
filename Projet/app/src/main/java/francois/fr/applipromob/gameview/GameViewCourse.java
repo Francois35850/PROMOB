@@ -5,9 +5,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -15,7 +12,6 @@ import android.view.SurfaceView;
 import francois.fr.applipromob.R;
 import francois.fr.applipromob.objetsJeux.Runner;
 import francois.fr.applipromob.objetsJeux.Wind;
-import francois.fr.applipromob.sensors.AccelerometerCourse;
 import francois.fr.applipromob.thread.GameLoopCourse;
 
 public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callback {
@@ -24,10 +20,7 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
     private int score;
     private long startTime;
 
-    private AccelerometerCourse accel;
-    
-
-    private Runner runner;
+    public static Runner runner;
     private Wind wind;
 
 
@@ -43,8 +36,6 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
         getHolder().addCallback(this);
         gameLoopThread = new GameLoopCourse(this, this.getContext());
 
-        //Creation de l'acces à notre accelerometre
-        accel = new AccelerometerCourse(this.getContext(),this);
 
         //création de notre runner
         runner = new Runner(this.getContext());
@@ -72,7 +63,7 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
         textScore.setTextSize(50);
 
         canvas.drawText("Score : " + String.valueOf(score), (float) (w * 0.1), (float) (h * 0.1), textScore);
-        canvas.drawText("Accel : " + accel.getVal(), (float) (w * 0.1), (float) (h * 0.9),textScore);
+        //canvas.drawText("TEST : " + String.valueOf(), (float) (w * 0.9), (float) (h * 0.9), textScore);
 
         // on dessine le coureur
         runner.draw(canvas);
@@ -83,9 +74,9 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
     // On gère ici le déplacement des objets
     public void update() {
         runner.setImage(this.getContext(),runner.getRunnerW(),runner.getRunnerH());
-        if (accel.isValuesChanged()){
+        //System.out.println(runner.getX());
+        //System.out.println(runner.getY());
 
-        }
         if (System.currentTimeMillis() > startTime ) {
             //gameLoopThread.setRunning(false);
         }
@@ -101,6 +92,7 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
         }
         gameLoopThread.setRunning(true);
         gameLoopThread.start();
+
     }
 
     // Fonction obligatoire de l'objet SurfaceView
