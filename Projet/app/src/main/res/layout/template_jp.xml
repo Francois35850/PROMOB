@@ -266,5 +266,17 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tentatives"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        android:layout_marginTop="50dp"
+        android:text="Tentatives : 0"
+        android:textSize="20dp"
+        android:textColor="@color/orange"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

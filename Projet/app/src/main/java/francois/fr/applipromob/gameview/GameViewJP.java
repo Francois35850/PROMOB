@@ -24,11 +24,11 @@ public class GameViewJP extends AppCompatActivity {
 
     List<Button> buttons;
     ImageView effacer, valider;
-    TextView monPrix, moins, plus;
+    TextView monPrix, moins, plus, tentatives;
 
     String price;
     int reponse; // int compris entre 10 000 et 50 000 (compris)
-    int mini, max;
+    int mini, max, nbTry;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +38,7 @@ public class GameViewJP extends AppCompatActivity {
         // Initialisations valeurs
         mini = 10000;
         max = 50000;
+        nbTry = 0;
         price = "";
         // On prend un random pour la réponse
         Random r = new Random();
@@ -48,6 +49,7 @@ public class GameViewJP extends AppCompatActivity {
         monPrix = findViewById(R.id.mon_prix);
         moins = findViewById(R.id.moins);
         plus = findViewById(R.id.plus);
+        tentatives = findViewById(R.id.tentatives);
         actualiserPrix();
         // Initialisation Images (valider et effacer)
         effacer = findViewById(R.id.bEffacer);
@@ -76,6 +78,8 @@ public class GameViewJP extends AppCompatActivity {
                     }
                     reinitPrice();
                     actualiserPrix();
+                    nbTry++;
+                    tentatives.setText("Tentatives : " + nbTry);
                 } else
                     Toast.makeText(view.getContext(), "Le nombre n'est pas compris entre " + mini + " et " + max, Toast.LENGTH_SHORT).show();
                 actualiserPrix();
@@ -132,8 +136,7 @@ public class GameViewJP extends AppCompatActivity {
 
     public void checkResult(int rep) {
         if (reponse == rep) {
-            Toast.makeText(getApplicationContext(), "Bien joué !", Toast.LENGTH_SHORT).show();
-            System.out.println("C'est le bon");
+            Toast.makeText(getApplicationContext(), "Bravo, vous avez trouvé en " + nbTry + " tentatives", Toast.LENGTH_SHORT).show();
             Intent retour = new Intent(getApplicationContext(), Solo.class);
             startActivity(retour);
         }

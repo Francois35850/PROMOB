@@ -22,13 +22,11 @@ public class Puzzle {
         for(int i=0; i<30;i++) {
             values.add(i);
         }
-        System.out.println("Longueur values : " +values.size());
         for (int i = 0; i < listPiece.size(); i++) {
             Random r = new Random();
             int nbRand = r.nextInt(values.size());
             listPiece.get(i).setPosAleatoire(values.get(nbRand));
             values.remove(values.get(nbRand));
-            System.out.println(values.toString());
         }
     }
 

@@ -21,6 +21,7 @@ public class Multi extends AppCompatActivity {
             public void onClick(View view) {
                 Intent actMain = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(actMain);
+                finish();
             }
         });
     }
