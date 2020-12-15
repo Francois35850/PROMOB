@@ -19,6 +19,7 @@ import java.util.Random;
 
 import francois.fr.applipromob.R;
 import francois.fr.applipromob.Solo;
+import francois.fr.applipromob.ecransFins.FinJP;
 
 public class GameViewJP extends AppCompatActivity {
 
@@ -68,7 +69,6 @@ public class GameViewJP extends AppCompatActivity {
             public void onClick(View view) {
                 if (prixValide()) {
                     int value = Integer.valueOf(price);
-                    checkResult(value);
                     if (value > reponse) {
                         max = value;
                         plus.setText(String.valueOf(value).substring(0, 2) + " " + String.valueOf(value).substring(2));
@@ -77,9 +77,10 @@ public class GameViewJP extends AppCompatActivity {
                         moins.setText(String.valueOf(value).substring(0, 2) + " " + String.valueOf(value).substring(2));
                     }
                     reinitPrice();
-                    actualiserPrix();
                     nbTry++;
+                    actualiserPrix();
                     tentatives.setText("Tentatives : " + nbTry);
+                    checkResult(value);
                 } else
                     Toast.makeText(view.getContext(), "Le nombre n'est pas compris entre " + mini + " et " + max, Toast.LENGTH_SHORT).show();
                 actualiserPrix();
@@ -137,7 +138,10 @@ public class GameViewJP extends AppCompatActivity {
     public void checkResult(int rep) {
         if (reponse == rep) {
             Toast.makeText(getApplicationContext(), "Bravo, vous avez trouvé en " + nbTry + " tentatives", Toast.LENGTH_SHORT).show();
-            Intent retour = new Intent(getApplicationContext(), Solo.class);
+            Intent retour = new Intent(getApplicationContext(), FinJP.class);
+            retour.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            retour.putExtra("justePrix", reponse);
+            retour.putExtra("try", nbTry);
             startActivity(retour);
         }
     }

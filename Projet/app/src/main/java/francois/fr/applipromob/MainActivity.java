@@ -30,17 +30,14 @@ public class MainActivity extends AppCompatActivity {
                 if (numeroBtn == 1) {
                     Intent activity = new Intent(getApplicationContext(), Solo.class);
                     startActivity(activity);
-                    finish();
                 }
                 if (numeroBtn == 2) {
                     Intent activity = new Intent(getApplicationContext(), Multi.class);
                     startActivity(activity);
-                    finish();
                 }
                 if (numeroBtn == 3) {
                     Intent activity = new Intent(getApplicationContext(), Stats.class);
                     startActivity(activity);
-                    finish();
                 }
             }
         });

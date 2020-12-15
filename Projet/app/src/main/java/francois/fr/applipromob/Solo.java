@@ -1,6 +1,7 @@
 package francois.fr.applipromob;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.IntentCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,8 +33,8 @@ public class Solo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent actMain = new Intent(getApplicationContext(),MainActivity.class);
+                actMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(actMain);
-                finish();
             }
         });
 

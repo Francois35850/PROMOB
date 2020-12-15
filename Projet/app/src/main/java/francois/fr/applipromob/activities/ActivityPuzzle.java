@@ -40,6 +40,7 @@ public class ActivityPuzzle extends AppCompatActivity {
                 txtTimer.setText("GO !!");
                 // Lancement activité jeu
                 Intent jeu = new Intent(getApplicationContext(), GameViewPuzzle.class);
+                jeu.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(jeu);
             }
         }.start();

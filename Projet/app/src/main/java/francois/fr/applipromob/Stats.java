@@ -20,6 +20,7 @@ public class Stats extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent actMain = new Intent(getApplicationContext(),MainActivity.class);
+                actMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(actMain);
                 finish();
             }

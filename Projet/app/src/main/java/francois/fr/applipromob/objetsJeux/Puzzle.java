@@ -8,10 +8,10 @@ import java.util.Random;
 
 public class Puzzle {
     String name;
-    Drawable imgResult;
+    int imgResult;
     ArrayList<PiecePuzzle> listPiece;
 
-    public Puzzle(String name, Drawable imgResult, ArrayList<PiecePuzzle> lp) {
+    public Puzzle(String name, int imgResult, ArrayList<PiecePuzzle> lp) {
         this.name = name;
         this.imgResult = imgResult;
         this.listPiece = lp;
@@ -19,7 +19,7 @@ public class Puzzle {
 
     public void melangePieces() {
         List<Integer> values = new ArrayList();
-        for(int i=0; i<30;i++) {
+        for (int i = 0; i < 30; i++) {
             values.add(i);
         }
         for (int i = 0; i < listPiece.size(); i++) {
@@ -30,13 +30,21 @@ public class Puzzle {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getImgResult() {
+        return imgResult;
+    }
+
     public ArrayList<PiecePuzzle> getLp() {
         return listPiece;
     }
 
     public boolean termine() {
-        for(int i=0; i<listPiece.size();i++) {
-            if(listPiece.get(i).isVisible()) return false;
+        for (int i = 0; i < listPiece.size(); i++) {
+            if (listPiece.get(i).isVisible()) return false;
         }
         return true;
     }

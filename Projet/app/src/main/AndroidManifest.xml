@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="francois.fr.applipromob">
 
-    <uses-feature android:name="android.hardware.sensor.accelerometer"
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
         android:required="true" />
 
     <application
@@ -12,11 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".gameview.GameViewPuzzle"></activity>
+        <activity android:name=".ecransFins.FinJP"></activity>
+        <activity android:name=".ecransFins.FinPuzzle" />
+        <activity android:name=".gameview.GameViewPuzzle" />
         <activity android:name=".activities.ActivityPuzzle" />
         <activity android:name=".activities.ActivityJustePrix" />
         <activity android:name=".activities.ActivityCible" />
-        <activity android:name=".activities.ActivityCourse"/>
+        <activity android:name=".activities.ActivityCourse" />
         <activity android:name=".gameview.GameViewJP" />
         <activity android:name=".Stats" />
         <activity android:name=".Multi" />

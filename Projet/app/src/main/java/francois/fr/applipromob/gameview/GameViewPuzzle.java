@@ -1,13 +1,10 @@
 package francois.fr.applipromob.gameview;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.ClipData;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.View;
@@ -23,7 +20,7 @@ import java.util.TimerTask;
 
 import francois.fr.applipromob.AdapterPiecePuzzle;
 import francois.fr.applipromob.R;
-import francois.fr.applipromob.Solo;
+import francois.fr.applipromob.ecransFins.FinPuzzle;
 import francois.fr.applipromob.objetsJeux.PiecePuzzle;
 import francois.fr.applipromob.objetsJeux.Puzzle;
 
@@ -99,8 +96,11 @@ public class GameViewPuzzle extends AppCompatActivity {
                             puzzleChoisi.getLp().get(position).setVisible(false);
                             v.setVisibility(View.INVISIBLE);
                             if (puzzleChoisi.termine()) {
-                                Intent activity = new Intent(getApplicationContext(), Solo.class);
-                                activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                Intent activity = new Intent(getApplicationContext(), FinPuzzle.class);
+                                activity.putExtra("nom",puzzleChoisi.getName());
+                                activity.putExtra("puzzle", puzzleChoisi.getImgResult());
+                                activity.putExtra("temps",timeToString(time));
+                                activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(activity);
                             }
                         }
@@ -241,7 +241,7 @@ public class GameViewPuzzle extends AppCompatActivity {
         piecesWinnie.add(new PiecePuzzle(getResources().getDrawable(R.drawable.winnie28), 28));
         piecesWinnie.add(new PiecePuzzle(getResources().getDrawable(R.drawable.winnie29), 29));
         piecesWinnie.add(new PiecePuzzle(getResources().getDrawable(R.drawable.winnie30), 30));
-        Puzzle winnie = new Puzzle("Winnie", getResources().getDrawable(R.drawable.winnie_resultat), piecesWinnie);
+        Puzzle winnie = new Puzzle("Winnie", R.drawable.winnie_resultat, piecesWinnie);
         winnie.melangePieces();
         puzzles.add(winnie);
 
@@ -277,7 +277,7 @@ public class GameViewPuzzle extends AppCompatActivity {
         piecesJoe.add(new PiecePuzzle(getResources().getDrawable(R.drawable.biden28), 28));
         piecesJoe.add(new PiecePuzzle(getResources().getDrawable(R.drawable.biden29), 29));
         piecesJoe.add(new PiecePuzzle(getResources().getDrawable(R.drawable.biden30), 30));
-        Puzzle biden = new Puzzle("Biden", getResources().getDrawable(R.drawable.biden_resultat), piecesJoe);
+        Puzzle biden = new Puzzle("Biden", R.drawable.biden_resultat, piecesJoe);
         biden.melangePieces();
         puzzles.add(biden);
     }

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ecransFins.FinJP">
+
+    <TextView
+        android:id="@id/felicitations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/stanberry"
+        android:text="Félicitations !"
+        android:textColor="@color/bleu_fonce"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/quitter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/felicitations">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Juste Prix"
+            android:fontFamily="@font/stanberry"
+            android:textSize="25dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/resultJP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_mon_prix"
+            android:fontFamily="@font/stanberry"
+            android:padding="20dp"
+            android:gravity="center_horizontal"
+            android:text="test"
+            android:textColor="@color/bleu_fonce"
+            android:textSize="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/infosJP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/stanberry"
+            android:gravity="center_horizontal"
+            android:text="test"
+            android:textAlignment="center"
+            android:textColor="@color/orange"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultJP" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@id/quitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="110dp"
+        android:background="@drawable/custom_button"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="7dp"
+        android:text="Retourner à l'accueil"
+        android:textAllCaps="false"
+        android:textColor="@color/bleu_fonce"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
