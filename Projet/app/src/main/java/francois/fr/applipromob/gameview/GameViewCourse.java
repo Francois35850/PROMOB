@@ -91,7 +91,7 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
         tpstotal = (int) ((System.currentTimeMillis()) - startTime)/1000;
 
         if (runner.getX() >= runner.getScreenW()*90/100 ) {
-            score = 1000-tpstotal*100;
+            score = 1500-tpstotal*100;
             if (score<0) score = 0;
             gameLoopThread.setRunning(false);
         }
