@@ -23,7 +23,7 @@ public class Runner {
     // Constructeur de l'objet "Runner"
     public Runner(final Context c)
     {
-        x= 0; y=500; // position de départ
+        x= 0; y=0; // position de départ
         mContext=c; // sauvegarde du contexte
     }
 
@@ -57,6 +57,8 @@ public class Runner {
         wEcran=wScreen;
         hEcran=hScreen;
 
+        //Position
+        setY(hEcran*40/100);
         // on définit (au choix) la taille du runner à 1/5ème de la largeur de l'écran
         runnerW=wEcran/5;
         runnerH=hEcran/5;
@@ -86,6 +88,11 @@ public class Runner {
     // retourne la largeur du runner en pixel
     public int getRunnerW() {
         return runnerW;
+    }
+
+    // retourne la largeur du runner en pixel
+    public int getScreenW() {
+        return wEcran;
     }
 
     // retourne la hauteur du runner en pixel

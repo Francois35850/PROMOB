@@ -34,7 +34,7 @@ public class ActivityCourse extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cible);
+        setContentView(R.layout.activity_athle);
 
         //Initialisation des valeurs de l'accelerometre
         prevX = 0;
@@ -54,6 +54,7 @@ public class ActivityCourse extends AppCompatActivity{
             @Override
             public void onFinish() {
                 txtTimer.setText("GO !!");
+                gameViewC.setTimGV(System.currentTimeMillis());
                 setContentView(gameViewC);
             }
         }.start();
@@ -65,8 +66,13 @@ public class ActivityCourse extends AppCompatActivity{
             public void onTranslation(float tx, float ty, float tz) {
                 System.out.println(tx);
                 System.out.println(ty);System.out.println(tz);
-                if (prevX > tx + 1 || prevX < tx - 1 || prevY > ty + 1 || prevY < ty - 1 || prevZ > tz + 1 || prevZ < tz - 1 ) {
-                    gameViewC.getRunner().setX(gameViewC.getRunner().getX()+2);
+                int mouv = 2;
+                if (prevX > tx + mouv || prevX < tx - mouv || prevY > ty + mouv || prevY < ty - mouv || prevZ > tz + mouv || prevZ < tz - mouv ) {
+                    int step = 1*gameViewC.getRunner().getScreenW()/100;
+                    if (!gameViewC.getWind().isActive()) {
+                        gameViewC.getRunner().setX(gameViewC.getRunner().getX()+step);
+                    }
+                    else if (gameViewC.getRunner().getX()>step) gameViewC.getRunner().setX(gameViewC.getRunner().getX()-(step));
                     prevX = tx;
                     prevY = ty;
                     prevZ = tz;

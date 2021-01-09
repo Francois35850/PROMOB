@@ -76,7 +76,6 @@ public class GameViewCible extends SurfaceView implements SurfaceHolder.Callback
             gameLoopThread.setRunning(false);
         }
         tpsRestant = (int) ((startTime + tpsTotal - System.currentTimeMillis()) / 1000) + 1;
-        System.out.println(tpsRestant);
     }
 
     // Fonction obligatoire de l'objet SurfaceView

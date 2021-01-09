@@ -12,6 +12,7 @@ import android.view.SurfaceView;
 import francois.fr.applipromob.R;
 import francois.fr.applipromob.objetsJeux.Runner;
 import francois.fr.applipromob.objetsJeux.Wind;
+import francois.fr.applipromob.objetsJeux.finishLine;
 import francois.fr.applipromob.thread.GameLoopCourse;
 
 public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callback {
@@ -19,9 +20,12 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
     private GameLoopCourse gameLoopThread;
     private int score;
     private long startTime;
+    private int tpstotal;
 
-    public static Runner runner;
+
+    public Runner runner;
     private Wind wind;
+    private finishLine fLine;
 
 
     public String checkDigit(int number) {
@@ -32,7 +36,7 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
     public GameViewCourse(Context context) {
         super(context);
         score = 0;
-        startTime = System.currentTimeMillis();
+        tpstotal = 0;
         getHolder().addCallback(this);
         gameLoopThread = new GameLoopCourse(this, this.getContext());
 
@@ -42,6 +46,9 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
 
         //Création de notre wind
         wind = new Wind(this.getContext());
+
+        //Création de la ligne d'arrivée
+        fLine = new finishLine(this.getContext());
 
     }
 
@@ -62,11 +69,18 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
         textScore.setColor(R.color.bleu_fonce);
         textScore.setTextSize(50);
 
-        canvas.drawText("Score : " + String.valueOf(score), (float) (w * 0.1), (float) (h * 0.1), textScore);
-        //canvas.drawText("TEST : " + String.valueOf(), (float) (w * 0.9), (float) (h * 0.9), textScore);
+        canvas.drawText("Avancez en secouant votre téléphone.", (float) (w * 0.1), (float) (h * 0.9), textScore);
+        canvas.drawText("Si il y a du vent, arrêtez de bouger.", (float) (w * 0.1), (float) (h * 0.95), textScore);
+
+        //canvas.drawText("Time : " + String.valueOf(time), (float) (w * 0.1), (float) (h * 0.1), textScore);
+        canvas.drawText("Temps : " + String.valueOf(tpstotal), (float) (w * 0.1), (float) (h * 0.1), textScore);
 
         // on dessine le coureur
+        fLine.draw(canvas);
         runner.draw(canvas);
+        if (wind.isActive()) {
+            wind.draw(canvas);
+        }
     }
 
 
@@ -74,11 +88,12 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
     // On gère ici le déplacement des objets
     public void update() {
         runner.setImage(this.getContext(),runner.getRunnerW(),runner.getRunnerH());
-        //System.out.println(runner.getX());
-        //System.out.println(runner.getY());
+        tpstotal = (int) ((System.currentTimeMillis()) - startTime)/1000;
 
-        if (System.currentTimeMillis() > startTime ) {
-            //gameLoopThread.setRunning(false);
+        if (runner.getX() >= runner.getScreenW()*90/100 ) {
+            score = 1000-tpstotal*100;
+            if (score<0) score = 0;
+            gameLoopThread.setRunning(false);
         }
     }
 
@@ -111,25 +126,6 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
         }
     }
 
-    // Gère les touchés sur l'écran
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        int currentX = (int) event.getX();
-        int currentY = (int) event.getY();
-
-        switch (event.getAction()) {
-
-            // code exécuté lorsque le doigt touche l'écran.
-            case MotionEvent.ACTION_DOWN:
-                // si le doigt touche la cible :
-
-                break;
-        }
-
-        return true;  // On retourne "true" pour indiquer qu'on a géré l'évènement
-    }
-
-
     // Fonction obligatoire de l'objet SurfaceView
     // Fonction appelée à la CREATION et MODIFICATION et ONRESUME de l'écran
     // nous obtenons ici la largeur/hauteur de l'écran en pixels
@@ -137,10 +133,19 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
     public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int w, int h) {
         runner.resize(w, h); // on définit la taille de la cible selon la taille de l'écran
         wind.resize(w,h);
+        fLine.resize(w,h);
     }
 
     public Runner getRunner() {
         return runner;
+    }
+
+    public Wind getWind() {
+        return wind;
+    }
+
+    public void setTimGV(long time){
+        startTime = time;
     }
 
 

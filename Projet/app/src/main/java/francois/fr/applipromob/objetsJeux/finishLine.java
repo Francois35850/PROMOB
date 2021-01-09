@@ -5,50 +5,34 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.CountDownTimer;
+
+import java.util.Random;
 
 import francois.fr.applipromob.R;
 
-public class Wind {
+public class finishLine {
 
     private BitmapDrawable img = null; // image
     private int x,y; // coordonnées x,y en pixel
-    private int windW, windH; // largeur et hauteur de l'image en pixels
+    private int fLineW, fLineH; // largeur et hauteur de l'image en pixels
     private int wEcran,hEcran; // largeur et hauteur de l'écran en pixels
-    private boolean active;// Defini si le vent souffle ou non
 
     private final Context mContext;
 
-    // Constructeur de l'objet "Wind"
-    public Wind(final Context c)
+    // Constructeur de l'objet "finishLine"
+    public finishLine(final Context c)
     {
-        x= 0; y=0; // position de départ
+
+        x= 0; y= 0; // position de départ
         mContext=c; // sauvegarde du contexte
-        active = false;
-        randomActive();
     }
 
-    public void randomActive(){
-        double time = Math.random()*2+1;
-        new CountDownTimer((long)time * 1000, 1000) {
-            @Override
-            public void onTick(long l) {
-            }
-
-            @Override
-            public void onFinish() {
-                active = !active;
-                randomActive();
-            }
-        }.start();
-    }
-
-    // on attribue à l'objet "Wind" l'image passée en paramètre
+    // on attribue à l'objet "finishLine" l'image passée en paramètre
     // w et h sont sa largeur et hauteur définis en pixels
     public BitmapDrawable setImage(final Context c, final int w, final int h)
     {
         //A modifier
-        int ressource = R.drawable.vent;
+        int ressource = R.drawable.finish_line;
         Drawable dr = c.getResources().getDrawable(ressource);
         Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
         return new BitmapDrawable(c.getResources(), Bitmap.createScaledBitmap(bitmap, w, h, true));
@@ -60,57 +44,50 @@ public class Wind {
         wEcran=wScreen;
         hEcran=hScreen;
 
-        //Position
-        setX(wEcran*40/100);
-        setY(hEcran*10/100);
+        //On change la position de la ligne d'arrivée mnt qu'on a les dimensions de l'écran
+        setX(wEcran*94/100);
+        setY(hEcran*40/100);
+
         // on définit (au choix) la taille au 1/5ème de la largeur de l'écran
-        windW=wEcran/2;
-        windH=hEcran/5;
-        img = setImage(mContext,windW,windH);
+        fLineW=wEcran/15;
+        fLineH=hEcran/5;
+        img = setImage(mContext,fLineW,fLineH);
     }
 
-    // définit la coordonnée X du wind
+    // définit la coordonnée X de fLine
     public void setX(int x) {
         this.x = x;
     }
 
-    // définit la coordonnée Y du wind
+    // définit la coordonnée Y du fLine
     public void setY(int y) {
         this.y = y;
     }
 
-    // retourne la coordonnée X du wind
+    // retourne la coordonnée X du fLine
     public int getX() {
         return x;
     }
 
-    // retourne la coordonnée Y du wind
+    // retourne la coordonnée Y du fLine
     public int getY() {
         return y;
     }
 
-    // retourne la largeur du wind en pixel
-    public int getWindW() {
-        return windW;
+    // retourne la largeur du fLine en pixel
+    public int getfLineW() {
+        return fLineW;
     }
 
-    // retourne la hauteur du wind en pixel
-    public int getWindH() {
-        return windH;
+    // retourne la hauteur du fLine en pixel
+    public int getfLineH() {
+        return fLineH;
     }
 
-    // on dessine le wind, en x et y
+    // on dessine la fLine, en x et y
     public void draw(Canvas canvas)
     {
         if(img==null) {return;}
         canvas.drawBitmap(img.getBitmap(), x, y, null);
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
     }
 }
