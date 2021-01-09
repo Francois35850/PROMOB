@@ -1,12 +1,15 @@
 package francois.fr.applipromob;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.view.View;
 import android.widget.Button;
@@ -43,12 +46,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void permission() {
+        String[] permissions = {
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.INTERNET,
+                Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.CHANGE_NETWORK_STATE,
+                Manifest.permission.ACCESS_WIFI_STATE,
+                Manifest.permission.CHANGE_WIFI_STATE,
+        };
+        ActivityCompat.requestPermissions(this, permissions, PackageManager.PERMISSION_GRANTED);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         miniJeux.clear();
 
+        permission();
 
         // Boutons qui recherche les joueurs connectés
         FloatingActionButton fab = findViewById(R.id.fab);
