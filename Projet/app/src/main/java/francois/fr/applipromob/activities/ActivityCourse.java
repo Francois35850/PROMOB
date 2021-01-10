@@ -64,9 +64,7 @@ public class ActivityCourse extends AppCompatActivity{
         accelerometer.setListener(new Accelerometer.Listener() {
             @Override
             public void onTranslation(float tx, float ty, float tz) {
-                System.out.println(tx);
-                System.out.println(ty);System.out.println(tz);
-                int mouv = 2;
+                int mouv = 8;
                 if (prevX > tx + mouv || prevX < tx - mouv || prevY > ty + mouv || prevY < ty - mouv || prevZ > tz + mouv || prevZ < tz - mouv ) {
                     int step = 1*gameViewC.getRunner().getScreenW()/100;
                     if (!gameViewC.getWind().isActive()) {

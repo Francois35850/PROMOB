@@ -9,19 +9,21 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import francois.fr.applipromob.R;
-import francois.fr.applipromob.objetsJeux.Runner;
-import francois.fr.applipromob.objetsJeux.Wind;
-import francois.fr.applipromob.objetsJeux.finishLine;
+import francois.fr.applipromob.objetsJeux.Boat;
+import francois.fr.applipromob.objetsJeux.Log;
 import francois.fr.applipromob.thread.GameLoopBateau;
-import francois.fr.applipromob.thread.GameLoopCourse;
 
 public class GameViewBateau extends SurfaceView implements SurfaceHolder.Callback {
 
     private GameLoopBateau gameLoopThread;
     private int score;
-    private long startTime;
+    private long startTime ;
     private int tpstotal;
+    private boolean logAvailable;
+    private int vitesse;
 
+    private Boat bateau;
+    private Log log;
 
     public String checkDigit(int number) {
         return number <= 9 ? "0" + number : String.valueOf(number);
@@ -31,10 +33,15 @@ public class GameViewBateau extends SurfaceView implements SurfaceHolder.Callbac
     public GameViewBateau(Context context) {
         super(context);
         score = 0;
+        vitesse = 0;
         tpstotal = 0;
+        logAvailable = true;
         getHolder().addCallback(this);
         gameLoopThread = new GameLoopBateau(this, this.getContext());
 
+        //Création du bateau
+        bateau = new Boat(this.getContext());
+        log = new Log(this.getContext());
     }
 
     // Fonction qui "dessine" un écran de jeu
@@ -54,13 +61,37 @@ public class GameViewBateau extends SurfaceView implements SurfaceHolder.Callbac
         textScore.setColor(R.color.bleu_fonce);
         textScore.setTextSize(50);
 
+        canvas.drawText("Temps : " + String.valueOf(tpstotal), (float) (w * 0.1), (float) (h * 0.1), textScore);
+
+        bateau.draw(canvas);
+        log.draw(canvas);
+    }
+
+    public boolean collision (Log l){
+        return bateau.getX() < l.getX() + l.getLogW() &&
+                bateau.getX() + bateau.getBoatW() > l.getX() &&
+                bateau.getY() < l.getY() + l.getLogH() &&
+                bateau.getBoatH() + bateau.getY() > l.getY();
     }
 
 
     // Fonction appelée par la boucle principale (gameLoopThread)
     // On gère ici le déplacement des objets
     public void update() {
-        if (false) {
+        if (logAvailable){
+            logAvailable = false;
+            vitesse = vitesse + 1;
+            double randomX = Math.random()*(log.getScreenW()-2*log.getLogW());
+            log.setX((int)randomX+log.getLogW());
+            log.setY(-log.getScreenH()*5/100);
+        }
+        else {
+            log.setY(log.getY()+log.getScreenH()*vitesse/100);
+            if (log.getY()>= log.getScreenH()*110/100) logAvailable = true;
+        }
+        tpstotal = (int) ((System.currentTimeMillis()) - startTime)/1000;
+        if (collision(log)) {
+            score = tpstotal*100;
             gameLoopThread.setRunning(false);
         }
     }
@@ -99,9 +130,17 @@ public class GameViewBateau extends SurfaceView implements SurfaceHolder.Callbac
     // nous obtenons ici la largeur/hauteur de l'écran en pixels
     @Override
     public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int w, int h) {
+        bateau.resize(w,h);
+        log.resize(w,h);
     }
 
+    public Boat getBateau(){
+        return bateau;
+    }
 
+    public void setTimGV(long time){
+        startTime = time;
+    }
 
 }
 

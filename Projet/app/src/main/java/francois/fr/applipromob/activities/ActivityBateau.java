@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import francois.fr.applipromob.R;
 import francois.fr.applipromob.gameview.GameViewBateau;
-import francois.fr.applipromob.gameview.GameViewCourse;
 import francois.fr.applipromob.sensors.Accelerometer;
 
 public class ActivityBateau extends AppCompatActivity{
@@ -18,6 +17,7 @@ public class ActivityBateau extends AppCompatActivity{
     private TextView txtTimer;
     private int time; // temps en sec
     private float prevX,prevY,prevZ;
+    private  Accelerometer accelerometer;
 
 
     public String checkDigit(int number) {
@@ -47,28 +47,25 @@ public class ActivityBateau extends AppCompatActivity{
             @Override
             public void onFinish() {
                 txtTimer.setText("GO !!");
+                gameViewB.setTimGV(System.currentTimeMillis());
                 setContentView(gameViewB);
             }
         }.start();
 
         //Gestion de l'accelerometre
-        /*accelerometer = new Accelerometer(this);
+        accelerometer = new Accelerometer(this);
         accelerometer.setListener(new Accelerometer.Listener() {
             @Override
             public void onTranslation(float tx, float ty, float tz) {
-                int mouv = 2;
-                if (prevX > tx + mouv || prevX < tx - mouv || prevY > ty + mouv || prevY < ty - mouv || prevZ > tz + mouv || prevZ < tz - mouv ) {
-                    int step = 1*gameViewC.getRunner().getScreenW()/100;
-                    if (!gameViewC.getWind().isActive()) {
-                        gameViewC.getRunner().setX(gameViewC.getRunner().getX()+step);
-                    }
-                    else if (gameViewC.getRunner().getX()>step) gameViewC.getRunner().setX(gameViewC.getRunner().getX()-(step));
-                    prevX = tx;
-                    prevY = ty;
-                    prevZ = tz;
+                int mouv = 4;
+                if (prevX > tx + mouv || prevX < tx - mouv ) {
+                    int XBoat = gameViewB.getBateau().getX();
+                    int largeurE = gameViewB.getBateau().getScreenW();
+                    if (prevX < tx + mouv && XBoat > 0) gameViewB.getBateau().setX(XBoat-(largeurE*1/100));
+                    if (prevX > tx + mouv && XBoat < largeurE - gameViewB.getBateau().getBoatW()) gameViewB.getBateau().setX(XBoat+(largeurE*1/100));
                 }
             }
-        });*/
+        });
 
 
     }
@@ -76,13 +73,13 @@ public class ActivityBateau extends AppCompatActivity{
     @Override
     protected void onResume(){
         super.onResume();
-        //accelerometer.register();
+        accelerometer.register();
     }
 
     @Override
     protected void onPause(){
         super.onPause();
-        //accelerometer.unregister();
+        accelerometer.unregister();
     }
 
 }

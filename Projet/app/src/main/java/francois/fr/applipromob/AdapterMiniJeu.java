@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import francois.fr.applipromob.activities.ActivityBateau;
 import francois.fr.applipromob.activities.ActivityCible;
 import francois.fr.applipromob.activities.ActivityCourse;
 import francois.fr.applipromob.activities.ActivityJustePrix;
@@ -65,7 +66,7 @@ public class AdapterMiniJeu extends RecyclerView.Adapter<AdapterMiniJeu.ViewHold
                             view.getContext().startActivity(new Intent(view.getContext(), ActivityCible.class));
                             break;
                         case "Bateau":
-                            view.getContext().startActivity(new Intent(view.getContext(), ActivityCible.class));
+                            view.getContext().startActivity(new Intent(view.getContext(), ActivityBateau.class));
                             break;
                         case "Puzzle":
                             view.getContext().startActivity(new Intent(view.getContext(), ActivityPuzzle.class));
