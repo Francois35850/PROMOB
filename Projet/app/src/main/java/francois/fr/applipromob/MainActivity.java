@@ -88,5 +88,6 @@ public class MainActivity extends AppCompatActivity {
         addMiniJeu(new Jeu("Bateau", 4, Jeu.VictoryType.TEMPS, R.drawable.jeu_bateau, R.drawable.jeu_bateau));
         addMiniJeu(new Jeu("Puzzle", 4, Jeu.VictoryType.TEMPS, R.drawable.jeu_puzzle, R.drawable.jeu_puzzle));
         addMiniJeu(new Jeu("Juste Prix", 4, Jeu.VictoryType.POINTS, R.drawable.jeu_juste_prix, R.drawable.jeu_juste_prix));
+        addMiniJeu(new Jeu("Calculs", 4, Jeu.VictoryType.POINTS, R.drawable.jeu_quizz, R.drawable.jeu_quizz));
     }
 }
