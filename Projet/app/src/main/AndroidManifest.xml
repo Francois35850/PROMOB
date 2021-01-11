@@ -25,6 +25,7 @@
         <activity android:name=".activities.ActivityQuizz" />
         <activity android:name=".ecransFins.FinJP" />
         <activity android:name=".ecransFins.FinPuzzle" />
+        <activity android:name=".ecransFins.FinBateau" />
         <activity android:name=".gameview.GameViewPuzzle" />
         <activity android:name=".activities.ActivityPuzzle" />
         <activity android:name=".activities.ActivityBateau" />

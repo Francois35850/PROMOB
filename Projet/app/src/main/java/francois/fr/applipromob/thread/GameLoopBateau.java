@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Canvas;
 
 import francois.fr.applipromob.Solo;
+import francois.fr.applipromob.ecransFins.FinBateau;
+import francois.fr.applipromob.ecransFins.FinPuzzle;
 import francois.fr.applipromob.gameview.GameViewBateau;
 import francois.fr.applipromob.gameview.GameViewCourse;
 
@@ -76,8 +78,10 @@ public class GameLoopBateau extends Thread {
             } catch (Exception e) {
             }
         } // boucle while (running)
-        Intent activity = new Intent(context, Solo.class);
-        activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent activity = new Intent(context, FinBateau.class);
+        activity.putExtra("temps",view.getTime());
+        activity.putExtra("Score",view.getScore());
+        activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(activity);
     } // public void run()
 }
