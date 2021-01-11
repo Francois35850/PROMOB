@@ -7,12 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import francois.fr.applipromob.activities.ActivityBateau;
+import francois.fr.applipromob.activities.ActivityQuizz;
 import francois.fr.applipromob.activities.ActivityCible;
 import francois.fr.applipromob.activities.ActivityCourse;
 import francois.fr.applipromob.activities.ActivityJustePrix;
@@ -73,6 +73,9 @@ public class AdapterMiniJeu extends RecyclerView.Adapter<AdapterMiniJeu.ViewHold
                             break;
                         case "Juste Prix":
                             view.getContext().startActivity(new Intent(view.getContext(), ActivityJustePrix.class));
+                            break;
+                        case "Calculs":
+                            view.getContext().startActivity(new Intent(view.getContext(), ActivityQuizz.class));
                             break;
                         default:
                             System.out.println("Nom de jeu incorrect");

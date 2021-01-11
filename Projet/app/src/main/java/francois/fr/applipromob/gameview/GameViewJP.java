@@ -137,7 +137,6 @@ public class GameViewJP extends AppCompatActivity {
 
     public void checkResult(int rep) {
         if (reponse == rep) {
-            Toast.makeText(getApplicationContext(), "Bravo, vous avez trouvé en " + nbTry + " tentatives", Toast.LENGTH_SHORT).show();
             Intent retour = new Intent(getApplicationContext(), FinJP.class);
             retour.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             retour.putExtra("justePrix", reponse);

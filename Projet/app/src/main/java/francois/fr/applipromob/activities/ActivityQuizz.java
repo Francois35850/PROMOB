@@ -10,9 +10,10 @@ import android.widget.TextView;
 
 import francois.fr.applipromob.R;
 import francois.fr.applipromob.gameview.GameViewJP;
-import francois.fr.applipromob.gameview.GameViewPuzzle;
+import francois.fr.applipromob.gameview.GameViewQuizz;
 
-public class ActivityPuzzle extends AppCompatActivity {
+public class ActivityQuizz extends AppCompatActivity {
+
     TextView txtTimer;
     int time; // temps en sec
     View v;
@@ -24,7 +25,7 @@ public class ActivityPuzzle extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_puzzle);
+        setContentView(R.layout.activity_quizz);
         v = findViewById(R.id.imageView1);
         time = 2; // temps du décompte en secondes
         txtTimer = findViewById(R.id.txtTimer);
@@ -39,7 +40,7 @@ public class ActivityPuzzle extends AppCompatActivity {
             public void onFinish() {
                 txtTimer.setText("GO !!");
                 // Lancement activité jeu
-                Intent jeu = new Intent(getApplicationContext(), GameViewPuzzle.class);
+                Intent jeu = new Intent(getApplicationContext(), GameViewQuizz.class);
                 startActivity(jeu);
             }
         }.start();
