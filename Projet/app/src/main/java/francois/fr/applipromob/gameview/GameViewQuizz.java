@@ -48,7 +48,7 @@ public class GameViewQuizz extends AppCompatActivity {
         questionList.add(new Question("En moyenne, combien de temps passe une personne sur son téléphone au cours de sa vie ?", "3 mois", "6 mois", "2 ans", "10 ans", 3));
         questionList.add(new Question("Quel est le record de la personne ayant passé le plus de temps sans dormir ?", "2 jours", "4 jours", "7 jours", "11 jours", 4));
         questionList.add(new Question("Quel est le jouet le plus vendu de tous les temps ?", "Le Rubik's cube", "Furby", "Barbie", "SOS Ouistiti", 1));
-        questionList.add(new Question("Combien de kilo de chocolat l'allement moyen mange-t-il par an ?", "3,7 kg", "5,8 kg", "9,1 kg", "11,3 kg", 4));
+        questionList.add(new Question("Combien de kilo de chocolat l'allemand moyen mange-t-il par an ?", "3,7 kg", "5,8 kg", "9,1 kg", "11,3 kg", 4));
         questionList.add(new Question("Combien y a-t-il de marches dans la Tour Eiffel", "503", "1710", "2100", "3006", 2));
         questionList.add(new Question("Quel est le nom de bateau le plus répandu ?", "Grace", "Nauti", "Aquaholic", "Seas the day", 1));
         questionList.add(new Question("Combien d'emails sont envoyés chaque seconde dans le monde ?", "0,7 million", "1 million", "2 millions", "4,5 millions", 3));

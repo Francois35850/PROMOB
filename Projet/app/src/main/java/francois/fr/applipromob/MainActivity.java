@@ -35,7 +35,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void addJeuxJoues(int i) {
-        jeuxJoues.add(i);
+        switch (i) {
+            case 0:
+                jeuxJoues.add(i);
+                jeuxJoues.add(2);
+                break;
+            case 1:
+                jeuxJoues.add(i);
+                jeuxJoues.add(3);
+                break;
+            case 2:
+                jeuxJoues.add(i);
+                jeuxJoues.add(0);
+                break;
+            case 3:
+                jeuxJoues.add(i);
+                jeuxJoues.add(1);
+                break;
+            case 4:
+                jeuxJoues.add(i);
+                jeuxJoues.add(5);
+                break;
+            case 5:
+                jeuxJoues.add(i);
+                jeuxJoues.add(4);
+                break;
+            default:
+        }
     }
 
     public static void clearJJ() {

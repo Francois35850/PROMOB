@@ -281,7 +281,7 @@ public class GameViewPuzzle extends AppCompatActivity {
         piecesJoe.add(new PiecePuzzle(getResources().getDrawable(R.drawable.biden30), 30));
         Puzzle biden = new Puzzle("Biden", R.drawable.biden_resultat, piecesJoe);
         biden.melangePieces();
-        puzzles.add(biden);
+//        puzzles.add(biden);
     }
 
     private void initRecyclerView() {
