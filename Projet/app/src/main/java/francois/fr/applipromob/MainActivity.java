@@ -1,6 +1,7 @@
 package francois.fr.applipromob;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -17,12 +18,56 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
+import francois.fr.applipromob.activities.ActivityBateau;
+import francois.fr.applipromob.activities.ActivityCible;
+import francois.fr.applipromob.activities.ActivityCourse;
+import francois.fr.applipromob.activities.ActivityJustePrix;
+import francois.fr.applipromob.activities.ActivityPuzzle;
+import francois.fr.applipromob.activities.ActivityQuizz;
+
 public class MainActivity extends AppCompatActivity {
 
     public static List<Jeu> miniJeux = new ArrayList<Jeu>();
+    public static List<Integer> jeuxJoues = new ArrayList<>();
 
     public void addMiniJeu(Jeu j) {
         miniJeux.add(j);
+    }
+
+    public static void addJeuxJoues(int i) {
+        jeuxJoues.add(i);
+    }
+
+    public static void clearJJ() {
+        jeuxJoues.clear();
+    }
+
+    public static void lancerAct(Context ctx, int numJeu, int indice) {
+        Intent act = null;
+        switch (numJeu) {
+            case 0:
+                act = new Intent(ctx, ActivityCourse.class);
+                break;
+            case 1:
+                act = new Intent(ctx, ActivityCible.class);
+                break;
+            case 2:
+                act = new Intent(ctx, ActivityBateau.class);
+                break;
+            case 3:
+                act = new Intent(ctx, ActivityPuzzle.class);
+                break;
+            case 4:
+                act = new Intent(ctx, ActivityJustePrix.class);
+                break;
+            case 5:
+                act = new Intent(ctx, ActivityQuizz.class);
+                break;
+            default:
+        }
+        act.putExtra("indice", indice);
+        act.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        ctx.startActivity(act);
     }
 
     // Fonction qui gère les clics sur les boutons
@@ -88,6 +133,6 @@ public class MainActivity extends AppCompatActivity {
         addMiniJeu(new Jeu("Bateau", 4, Jeu.VictoryType.TEMPS, R.drawable.jeu_bateau, R.drawable.jeu_bateau));
         addMiniJeu(new Jeu("Puzzle", 4, Jeu.VictoryType.TEMPS, R.drawable.jeu_puzzle, R.drawable.jeu_puzzle));
         addMiniJeu(new Jeu("Juste Prix", 4, Jeu.VictoryType.POINTS, R.drawable.jeu_juste_prix, R.drawable.jeu_juste_prix));
-        addMiniJeu(new Jeu("Calculs", 4, Jeu.VictoryType.POINTS, R.drawable.jeu_quizz, R.drawable.jeu_quizz));
+        addMiniJeu(new Jeu("Quizz", 4, Jeu.VictoryType.POINTS, R.drawable.jeu_quizz, R.drawable.jeu_quizz));
     }
 }

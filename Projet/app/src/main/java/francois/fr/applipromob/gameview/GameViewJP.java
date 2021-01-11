@@ -137,10 +137,12 @@ public class GameViewJP extends AppCompatActivity {
 
     public void checkResult(int rep) {
         if (reponse == rep) {
+            int indice = getIntent().getIntExtra("indice", -1);
             Intent retour = new Intent(getApplicationContext(), FinJP.class);
             retour.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             retour.putExtra("justePrix", reponse);
             retour.putExtra("try", nbTry);
+            retour.putExtra("indice",indice);
             startActivity(retour);
         }
     }

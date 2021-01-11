@@ -74,7 +74,7 @@ public class AdapterMiniJeu extends RecyclerView.Adapter<AdapterMiniJeu.ViewHold
                         case "Juste Prix":
                             view.getContext().startActivity(new Intent(view.getContext(), ActivityJustePrix.class));
                             break;
-                        case "Calculs":
+                        case "Quizz":
                             view.getContext().startActivity(new Intent(view.getContext(), ActivityQuizz.class));
                             break;
                         default:

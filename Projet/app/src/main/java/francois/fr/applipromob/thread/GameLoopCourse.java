@@ -82,6 +82,7 @@ public class GameLoopCourse extends Thread {
         } // boucle while (running)
         Intent activity = new Intent(context, FinCourse.class);
         activity.putExtra("temps", view.getTpstotal());
+        activity.putExtra("indice", view.getIndice());
         activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(activity);
     } // public void run()

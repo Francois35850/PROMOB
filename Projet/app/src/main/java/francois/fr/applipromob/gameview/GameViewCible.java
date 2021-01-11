@@ -22,13 +22,16 @@ public class GameViewCible extends SurfaceView implements SurfaceHolder.Callback
     private int tpsTotal;
     private int tpsRestant;
 
+    int indice;
+
     public String checkDigit(int number) {
         return number <= 9 ? "0" + number : String.valueOf(number);
     }
 
     // création de la surface de dessin
-    public GameViewCible(Context context) {
+    public GameViewCible(Context context,int indice) {
         super(context);
+        this.indice = indice;
         score = 0;
         startTime = System.currentTimeMillis();
         getHolder().addCallback(this);
@@ -150,4 +153,11 @@ public class GameViewCible extends SurfaceView implements SurfaceHolder.Callback
         cible.randomLocation();
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public int getIndice() {
+        return indice;
+    }
 }

@@ -79,8 +79,9 @@ public class GameLoopBateau extends Thread {
             }
         } // boucle while (running)
         Intent activity = new Intent(context, FinBateau.class);
-        activity.putExtra("temps",view.getTime());
-        activity.putExtra("Score",view.getScore());
+        activity.putExtra("temps", view.getTime());
+        activity.putExtra("Score", view.getScore());
+        activity.putExtra("indice", view.getIndice());
         activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(activity);
     } // public void run()

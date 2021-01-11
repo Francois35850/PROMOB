@@ -96,10 +96,12 @@ public class GameViewPuzzle extends AppCompatActivity {
                             puzzleChoisi.getLp().get(position).setVisible(false);
                             v.setVisibility(View.INVISIBLE);
                             if (puzzleChoisi.termine()) {
+                                int indice = getIntent().getIntExtra("indice", -1);
                                 Intent activity = new Intent(getApplicationContext(), FinPuzzle.class);
                                 activity.putExtra("nom",puzzleChoisi.getName());
                                 activity.putExtra("puzzle", puzzleChoisi.getImgResult());
                                 activity.putExtra("temps",timeToString(time));
+                                activity.putExtra("indice",indice);
                                 activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(activity);
                             }

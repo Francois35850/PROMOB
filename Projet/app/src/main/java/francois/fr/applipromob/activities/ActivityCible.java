@@ -26,6 +26,8 @@ public class ActivityCible extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cible);
 
+        final int indice = getIntent().getIntExtra("indice", -1);
+
         time = 5; // temps du décompte en secondes
         txtTimer = findViewById(R.id.txtTimer);
         new CountDownTimer(time * 1000, 1000) {
@@ -38,7 +40,7 @@ public class ActivityCible extends AppCompatActivity {
             @Override
             public void onFinish() {
                 txtTimer.setText("GO !!");
-                gameViewC = new GameViewCible(getApplicationContext());
+                gameViewC = new GameViewCible(getApplicationContext(),indice);
                 setContentView(gameViewC);
             }
         }.start();

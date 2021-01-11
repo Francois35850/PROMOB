@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import francois.fr.applipromob.MainActivity;
 import francois.fr.applipromob.Solo;
+import francois.fr.applipromob.ecransFins.FinCibles;
 import francois.fr.applipromob.gameview.GameViewCible;
 
 public class GameLoopCible extends Thread {
@@ -77,8 +78,10 @@ public class GameLoopCible extends Thread {
             } catch (Exception e) {
             }
         } // boucle while (running)
-        Intent activity = new Intent(context, Solo.class);
-        activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent activity = new Intent(context, FinCibles.class);
+        activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        activity.putExtra("score", view.getScore());
+        activity.putExtra("indice", view.getIndice());
         context.startActivity(activity);
     } // public void run()
 }

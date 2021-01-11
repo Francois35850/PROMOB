@@ -36,12 +36,14 @@ public class ActivityCourse extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_athle);
 
+        int indice = getIntent().getIntExtra("indice", -1);
+
         //Initialisation des valeurs de l'accelerometre
         prevX = 0;
         prevY = 0;
         prevZ = 0;
 
-        gameViewC = new GameViewCourse(getApplicationContext());
+        gameViewC = new GameViewCourse(getApplicationContext(),indice);
         time = 2; // temps du décompte en secondes
         txtTimer = findViewById(R.id.txtTimer);
         new CountDownTimer(time * 1000, 1000) {

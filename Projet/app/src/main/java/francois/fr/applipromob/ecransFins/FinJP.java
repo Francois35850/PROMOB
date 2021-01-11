@@ -15,6 +15,8 @@ import francois.fr.applipromob.R;
 
 public class FinJP extends AppCompatActivity {
 
+    int indice;
+
     int prix,tentatives;
 
     Button quitter;
@@ -28,18 +30,35 @@ public class FinJP extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fin_jp);
 
+        indice = getIntent().getIntExtra("indice", -1);
+
         sound = new PlaySound(R.raw.victory,this);
 
         quitter = findViewById(R.id.quitter);
         resultJP = findViewById(R.id.resultJP);
         infosJP = findViewById(R.id.infosJP);
 
+        if (indice != -1 && indice != 3) {
+            quitter.setText("Jeu suivant");
+        }
+
         quitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(i);
+                if (indice != -1 && indice != 3) {
+                    int rand = (int) (Math.random() * 6);
+                    if (rand == 6) rand = 5;
+                    while (MainActivity.jeuxJoues.contains(rand)) {
+                        rand = (int) (Math.random() * 6);
+                        if (rand == 6) rand = 5;
+                    }
+                    MainActivity.addJeuxJoues(rand);
+                    MainActivity.lancerAct(getApplication(), rand, indice + 1);
+                } else {
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
+                }
             }
         });
 

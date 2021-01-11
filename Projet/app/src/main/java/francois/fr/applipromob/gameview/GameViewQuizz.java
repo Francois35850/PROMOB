@@ -17,6 +17,7 @@ import java.util.List;
 
 import francois.fr.applipromob.MainActivity;
 import francois.fr.applipromob.R;
+import francois.fr.applipromob.ecransFins.FinQuizz;
 import francois.fr.applipromob.objetsJeux.Question;
 
 public class GameViewQuizz extends AppCompatActivity {
@@ -173,8 +174,10 @@ public class GameViewQuizz extends AppCompatActivity {
     }
 
     public void finJeu() {
-        Intent retour = new Intent(getApplicationContext(), MainActivity.class);
-        Toast.makeText(getApplicationContext(), "Score : " + score, Toast.LENGTH_SHORT).show();
+        int indice = getIntent().getIntExtra("indice", -1);
+        Intent retour = new Intent(getApplicationContext(), FinQuizz.class);
+        retour.putExtra("score", score);
+        retour.putExtra("indice", indice);
         retour.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(retour);
     }

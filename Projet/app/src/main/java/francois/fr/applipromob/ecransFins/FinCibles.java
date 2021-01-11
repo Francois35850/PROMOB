@@ -6,37 +6,35 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import francois.fr.applipromob.MainActivity;
 import francois.fr.applipromob.PlaySound;
 import francois.fr.applipromob.R;
 
-public class FinCourse extends AppCompatActivity {
+public class FinCibles extends AppCompatActivity {
 
     int indice;
-    int image;
-    int tps;
+    int score;
 
     Button quitter;
-    ImageView imageRunner;
-    TextView infosPuzzle;
+    TextView infosQuizz;
 
     PlaySound sound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fin_course);
+        setContentView(R.layout.fin_cibles);
 
         indice = getIntent().getIntExtra("indice", -1);
 
         sound = new PlaySound(R.raw.victory, this);
 
         quitter = findViewById(R.id.quitter);
-        imageRunner = findViewById(R.id.imageRunner);
-        infosPuzzle = findViewById(R.id.infoCourse);
+        infosQuizz = findViewById(R.id.infosCibles);
+
+        System.out.println(indice);
 
         if (indice != -1 && indice != 3) {
             quitter.setText("Jeu suivant");
@@ -62,9 +60,7 @@ public class FinCourse extends AppCompatActivity {
             }
         });
 
-        tps = getIntent().getIntExtra("temps", 0);
-        image = R.drawable.runner_01;
-        imageRunner.setImageDrawable(getResources().getDrawable(image));
-        infosPuzzle.setText("Vous avez fini la course en " + tps + " secondes");
+        score = getIntent().getIntExtra("score", 0);
+        infosQuizz.setText("Vous avez cumulé un score de " + score + " en détruisant toutes ces cibles");
     }
 }

@@ -27,14 +27,17 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
     private Wind wind;
     private finishLine fLine;
 
+    int indice;
+
 
     public String checkDigit(int number) {
         return number <= 9 ? "0" + number : String.valueOf(number);
     }
 
     // création de la surface de dessin
-    public GameViewCourse(Context context) {
+    public GameViewCourse(Context context, int indice) {
         super(context);
+        this.indice = indice;
         score = 0;
         tpstotal = 0;
         getHolder().addCallback(this);
@@ -152,6 +155,9 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
         startTime = time;
     }
 
+    public int getIndice() {
+        return indice;
+    }
 
 }
 

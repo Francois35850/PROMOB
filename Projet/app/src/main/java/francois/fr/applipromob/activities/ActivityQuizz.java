@@ -26,6 +26,9 @@ public class ActivityQuizz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizz);
+
+        final int indice = getIntent().getIntExtra("indice", -1);
+
         v = findViewById(R.id.imageView1);
         time = 2; // temps du décompte en secondes
         txtTimer = findViewById(R.id.txtTimer);
@@ -41,6 +44,7 @@ public class ActivityQuizz extends AppCompatActivity {
                 txtTimer.setText("GO !!");
                 // Lancement activité jeu
                 Intent jeu = new Intent(getApplicationContext(), GameViewQuizz.class);
+                jeu.putExtra("indice", indice);
                 startActivity(jeu);
             }
         }.start();
