@@ -60,6 +60,7 @@ public class GameViewQuizz extends AppCompatActivity {
                     reponse1.setBackgroundColor(Color.GREEN);
                 } else {
                     reponse1.setBackgroundColor(Color.RED);
+                    allumerBonneReponse();
                 }
                 questionSuivante();
             }
@@ -72,6 +73,7 @@ public class GameViewQuizz extends AppCompatActivity {
                     reponse2.setBackgroundColor(Color.GREEN);
                 } else {
                     reponse2.setBackgroundColor(Color.RED);
+                    allumerBonneReponse();
                 }
                 questionSuivante();
             }
@@ -84,6 +86,7 @@ public class GameViewQuizz extends AppCompatActivity {
                     reponse3.setBackgroundColor(Color.GREEN);
                 } else {
                     reponse3.setBackgroundColor(Color.RED);
+                    allumerBonneReponse();
                 }
                 questionSuivante();
             }
@@ -96,10 +99,29 @@ public class GameViewQuizz extends AppCompatActivity {
                     reponse4.setBackgroundColor(Color.GREEN);
                 } else {
                     reponse4.setBackgroundColor(Color.RED);
+                    allumerBonneReponse();
                 }
                 questionSuivante();
             }
         });
+    }
+
+    public void allumerBonneReponse() {
+        switch (qActuelle.getBonneReponse()) {
+            case 1:
+                reponse1.setBackgroundColor(Color.GREEN);
+                break;
+            case 2:
+                reponse2.setBackgroundColor(Color.GREEN);
+                break;
+            case 3:
+                reponse3.setBackgroundColor(Color.GREEN);
+                break;
+            case 4:
+                reponse4.setBackgroundColor(Color.GREEN);
+                break;
+            default:
+        }
     }
 
     public void questionSuivante() {

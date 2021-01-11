@@ -7,6 +7,8 @@ import android.widget.Toast;
 
 import francois.fr.applipromob.MainActivity;
 import francois.fr.applipromob.Solo;
+import francois.fr.applipromob.ecransFins.FinCourse;
+import francois.fr.applipromob.ecransFins.FinPuzzle;
 import francois.fr.applipromob.gameview.GameViewCible;
 import francois.fr.applipromob.gameview.GameViewCourse;
 
@@ -78,8 +80,9 @@ public class GameLoopCourse extends Thread {
             } catch (Exception e) {
             }
         } // boucle while (running)
-        Intent activity = new Intent(context, Solo.class);
-        activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent activity = new Intent(context, FinCourse.class);
+        activity.putExtra("temps", view.getTpstotal());
+        activity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(activity);
     } // public void run()
 }

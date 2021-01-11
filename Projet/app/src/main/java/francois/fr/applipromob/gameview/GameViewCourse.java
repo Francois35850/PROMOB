@@ -87,12 +87,12 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
     // Fonction appelée par la boucle principale (gameLoopThread)
     // On gère ici le déplacement des objets
     public void update() {
-        runner.setImage(this.getContext(),runner.getRunnerW(),runner.getRunnerH());
-        tpstotal = (int) ((System.currentTimeMillis()) - startTime)/1000;
+        runner.setImage(this.getContext(), runner.getRunnerW(), runner.getRunnerH());
+        tpstotal = (int) ((System.currentTimeMillis()) - startTime) / 1000;
 
-        if (runner.getX() >= runner.getScreenW()*90/100 ) {
-            score = 1500-tpstotal*100;
-            if (score<0) score = 0;
+        if (runner.getX() >= runner.getScreenW() * 90 / 100) {
+            score = 1500 - tpstotal * 100;
+            if (score < 0) score = 0;
             gameLoopThread.setRunning(false);
         }
     }
@@ -132,8 +132,12 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
     @Override
     public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int w, int h) {
         runner.resize(w, h); // on définit la taille de la cible selon la taille de l'écran
-        wind.resize(w,h);
-        fLine.resize(w,h);
+        wind.resize(w, h);
+        fLine.resize(w, h);
+    }
+
+    public int getTpstotal() {
+        return tpstotal;
     }
 
     public Runner getRunner() {
@@ -144,7 +148,7 @@ public class GameViewCourse extends SurfaceView implements SurfaceHolder.Callbac
         return wind;
     }
 
-    public void setTimGV(long time){
+    public void setTimGV(long time) {
         startTime = time;
     }
 
