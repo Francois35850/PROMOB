@@ -84,8 +84,8 @@ public class GameViewBateau extends SurfaceView implements SurfaceHolder.Callbac
         if (logAvailable) {
             logAvailable = false;
             if (vitesse < 10) vitesse = vitesse + 1;
-            double randomX = Math.random() * (log.getScreenW() - 2 * log.getLogW());
-            log.setX((int) randomX + log.getLogW());
+            double randomX = Math.random() * (log.getScreenW() - log.getLogW());
+            log.setX((int) randomX);
             log.setY(-log.getScreenH() * 5 / 100);
         } else {
             log.setY(log.getY() + log.getScreenH() * vitesse / 100);
