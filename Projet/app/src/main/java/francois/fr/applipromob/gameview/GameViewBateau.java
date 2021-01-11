@@ -142,5 +142,8 @@ public class GameViewBateau extends SurfaceView implements SurfaceHolder.Callbac
         startTime = time;
     }
 
+    public int getTime() { return tpstotal;}
+    public int getScore() { return score;}
+
 }
 
